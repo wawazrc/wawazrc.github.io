@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HAPPUP Antasari | Buku Menu</title>
+  <link rel="preconnect" href="https://fonts.bunny.net" />
+  <link href="https://fonts.bunny.net/css?family=poppins:400,500,600,700|playfair-display:600,700,800|cinzel:600,700|jetbrains-mono:400,500" rel="stylesheet" />
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100vh; font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; background: #100c0a; color: #f8ecd0; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .menu-book { background: radial-gradient(circle at 20% 0%, rgba(216, 169, 79, 0.18), transparent 28%), radial-gradient(circle at 84% 18%, rgba(120, 66, 28, 0.2), transparent 28%), linear-gradient(180deg, #160f0b 0%, #090706 100%); min-height: 100vh; padding: 1.25rem 0.75rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .max-w-5xl { max-width: 64rem; }
+    .text-center { text-align: center; }
+    .print-hidden { display: block; }
+    @media print { .print-hidden { display: none; } }
+    .sm-mb-8 { margin-bottom: 2rem; }
+    .text-xs { font-size: 0.75rem; }
+    .text-small { font-size: 0.65rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-base { font-size: 1rem; }
+    .text-white { color: #fff; }
+    .text-gold { color: #c89949; }
+    .text-soft { color: #cbb99a; }
+    .text-glow { color: #d9ad5c; }
+    .text-highlight { color: #e4b45f; }
+    .font-semibold { font-weight: 600; }
+    .font-bold { font-weight: 700; }
+    .uppercase { text-transform: uppercase; }
+    .leading-tight { line-height: 1.1; }
+    .leading-7 { line-height: 1.75rem; }
+    .tracking-tight { letter-spacing: 0.24em; }
+    .tracking-sm { letter-spacing: 0.22em; }
+    .tracking-lg { letter-spacing: 0.35em; }
+    .mt-3 { margin-top: 0.75rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-5 { margin-top: 1.25rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mt-7 { margin-top: 1.75rem; }
+    .mt-9 { margin-top: 2.25rem; }
+    .mt-auto { margin-top: auto; }
+    .pt-6 { padding-top: 1.5rem; }
+    .pb-6 { padding-bottom: 1.5rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .pb-3 { padding-bottom: 0.75rem; }
+    .pt-6 { padding-top: 1.5rem; }
+    .max-w-sm { max-width: 24rem; }
+    .w-fit { width: fit-content; }
+    .flex { display: flex; }
+    .flex-wrap { flex-wrap: wrap; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-5 { gap: 1.25rem; }
+    .gap-8 { gap: 2rem; }
+    .grid { display: grid; }
+    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .border-top-bottom { border-top: 1px solid rgba(217, 173, 92, 0.5); border-bottom: 1px solid rgba(217, 173, 92, 0.5); }
+    .rounded-full { border-radius: 9999px; }
+    .border-1 { border: 1px solid rgba(216, 169, 79, 0.36); }
+    .page-number { display: grid; place-items: center; width: 3rem; height: 3rem; border: 1px solid rgba(216, 169, 79, 0.62); color: #ffd987; font-family: 'Playfair Display', 'Cinzel', ui-serif, Georgia, Cambria, serif; font-size: 1.35rem; line-height: 1; }
+    .menu-page { flex-direction: column; }
+    .cover-page { flex-direction: column; min-height: min(760px, calc(100svh - 2.5rem)); }
+    .a4-page { position: relative; isolation: isolate; display: flex; width: 100%; min-height: auto; overflow: hidden; padding: 1.5rem; background: radial-gradient(circle at 50% 18%, rgba(216, 169, 79, 0.18), transparent 24%), linear-gradient(145deg, #17110e 0%, #090706 100%); border: 1px solid rgba(216, 169, 79, 0.36); box-shadow: 0 18px 52px rgba(0, 0, 0, 0.42); }
+    .a4-page::before { content: ''; position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(90deg, rgba(216, 169, 79, 0.05) 1px, transparent 1px), linear-gradient(180deg, rgba(216, 169, 79, 0.04) 1px, transparent 1px); background-size: 38px 38px; opacity: 0.35; }
+    .a4-page::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, transparent 0%, rgba(255, 233, 170, 0.08) 42%, transparent 48%); pointer-events: none; }
+    .page-frame { position: absolute; inset: 0.8rem; border: 1px solid rgba(216, 169, 79, 0.5); pointer-events: none; }
+    .page-frame::before, .page-frame::after { content: ''; position: absolute; width: 4rem; height: 4rem; border: 1px solid rgba(216, 169, 79, 0.35); }
+    .page-frame::before { left: 0.8rem; top: 0.8rem; border-right: 0; border-bottom: 0; }
+    .page-frame::after { right: 0.8rem; bottom: 0.8rem; border-left: 0; border-top: 0; }
+    .lounge-glow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 12%, rgba(255, 210, 129, 0.34), transparent 14%), radial-gradient(circle at 18% 32%, rgba(216, 169, 79, 0.25), transparent 17%), radial-gradient(circle at 82% 34%, rgba(216, 169, 79, 0.24), transparent 17%); filter: blur(2px); }
+    .brand-wordmark { width: fit-content; max-width: 100%; border: 1px solid rgba(216, 169, 79, 0.5); background: rgba(6, 5, 4, 0.5); box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45); color: #ffd987; font-family: 'Playfair Display', 'Cinzel', ui-serif, Georgia, Cambria, serif; font-size: clamp(1.7rem, 7vw, 3.5rem); font-weight: 800; letter-spacing: 0; line-height: 1; padding: 1.1rem 1.4rem; text-align: center; margin-left: auto; margin-right: auto; }
+    .page-visual { position: relative; z-index: 10; margin-top: 1.5rem; overflow: hidden; border: 1px solid rgba(217, 173, 92, 0.35); background: rgba(0, 0, 0, 0.3); }
+    .page-visual img { width: 100%; height: 12rem; object-fit: cover; opacity: 0.8; }
+    .page-visual .visual-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.65)); }
+    .page-visual .visual-footer { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: end; justify-content: space-between; gap: 0.75rem; padding: 1rem; }
+    .page-visual .visual-footer p { max-width: 21rem; margin: 0; color: #f3dfb8; font-size: 0.75rem; line-height: 1.25rem; }
+    .page-visual .visual-footer .badge { width: 3.5rem; height: 3.5rem; border-radius: 9999px; border: 1px solid rgba(217, 173, 92, 0.65); background: rgba(217, 173, 92, 0.15); font-family: 'Playfair Display', 'Cinzel', serif; font-size: 1.5rem; line-height: 3.4rem; text-align: center; color: #ffd987; }
+    .menu-list { display: grid; gap: 0.58rem; margin-top: 1rem; }
+    .menu-list-compact { grid-template-columns: 1fr; row-gap: 0.48rem; }
+    .signature-list { gap: 0.72rem; margin-top: 1.2rem; }
+    .menu-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 0.75rem; border-bottom: 1px solid rgba(216, 169, 79, 0.18); padding-bottom: 0.48rem; }
+    .menu-name { min-width: 0; color: rgba(255, 249, 232, 0.92); font-size: 0.78rem; font-weight: 500; line-height: 1.3; overflow-wrap: anywhere; }
+    .menu-price { color: #e4b45f; font-size: 0.76rem; font-weight: 700; white-space: nowrap; }
+    .signature-list .menu-row { border: 1px solid rgba(216, 169, 79, 0.28); background: rgba(216, 169, 79, 0.08); padding: 0.78rem 0.86rem; }
+    .signature-list .menu-name::before { content: '*'; margin-right: 0.6rem; color: #ffd987; }
+    .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem; margin-top: 1.75rem; }
+    .social-links a { display: grid; place-items: center; width: 2.55rem; height: 2.55rem; border: 1px solid rgba(216, 169, 79, 0.58); border-radius: 999px; background: rgba(216, 169, 79, 0.08); color: #ffd987; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; }
+    .social-links a:hover { border-color: rgba(255, 217, 135, 0.9); background: rgba(216, 169, 79, 0.2); transform: translateY(-1px); }
+    .social-links svg { width: 1.12rem; height: 1.12rem; fill: currentColor; }
+    .page-header { display: flex; flex-direction: column; gap: 1rem; }
+    .page-header .title { margin: 0; }
+    .menu-section { margin-top: 1.5rem; }
+    @media (min-width: 640px) {
+      .menu-book { padding: 2rem 1.5rem; }
+      .sm-mb-8 { margin-bottom: 2rem; }
+      .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .a4-page { padding: 3rem; }
+      .cover-page { min-height: 1040px; }
+      .menu-page { min-height: 1040px; aspect-ratio: 210 / 297; }
+      .page-frame { inset: 1.35rem; }
+      .page-frame::before, .page-frame::after { width: 7rem; height: 7rem; }
+      .page-number { width: 4rem; height: 4rem; font-size: 1.8rem; }
+      .menu-list { gap: 0.8rem; }
+      .menu-list-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.4rem; row-gap: 0.58rem; }
+      .signature-list { gap: 1rem; margin-top: 2rem; }
+      .menu-row { gap: 1rem; padding-bottom: 0.65rem; }
+      .menu-name { font-size: 0.95rem; line-height: 1.35; }
+      .menu-price { font-size: 0.9rem; }
+      .signature-list .menu-row { padding: 1rem 1.1rem; }
+      .social-links a { width: 2.75rem; height: 2.75rem; }
+      .social-links svg { width: 1.2rem; height: 1.2rem; }
+    }
+    @media (max-width: 420px) {
+      .a4-page { padding: 1.2rem; }
+      .page-frame { inset: 0.55rem; }
+      .page-frame::before, .page-frame::after { width: 3rem; height: 3rem; }
+      .menu-row { grid-template-columns: minmax(0, 1fr); gap: 0.18rem; }
+      .menu-price { justify-self: start; }
+    }
+    @media print {
+      .menu-book { background: #fff; padding: 0; }
+      .a4-page { width: 210mm; min-height: 297mm; box-shadow: none; break-after: page; page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+  <main id="app" class="menu-book"></main>
+  <script>
+    const socialLinks = [
+      { label: 'WhatsApp', href: 'https://wa.me/6282148004822', icon: 'whatsapp' },
+      { label: 'Facebook', href: 'https://www.facebook.com/happup.samarinda.antasari', icon: 'facebook' },
+      { label: 'Instagram', href: 'https://www.instagram.com/happup.samarinda.antasari/', icon: 'instagram' },
+    ];
+    const visuals = {
+      signature: 'https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      friedRice: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      noodle: 'https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      snack: 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      mainFood: 'https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      dessert: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      candy: 'https://images.pexels.com/photos/4791261/pexels-photo-4791261.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      juice: 'https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      softDrink: 'https://images.pexels.com/photos/2775860/pexels-photo-2775860.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      coffee: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1000',
+      back: 'https://images.pexels.com/photos/3201922/pexels-photo-3201922.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    };
+    const recommended = [
+      'Nasi Goreng Seafood',
+      'Sop Iga Sapi',
+      'Chicken Wings',
+      'Udang Mayonaise',
+      'Salad Buah Spesial',
+    ];
+    const menuPages = [
+      { number: '01', title: 'Signature Menu', kicker: 'Recommended Menu', image: visuals.signature, featured: true, items: recommended.map((name) => ({ name, price: 'Recommended' })) },
+      { number: '02', title: 'Nasi Goreng', image: visuals.friedRice, items: [['Nasi Cap Cay', 'Rp56.000'], ['Nasi Goreng Ayam', 'Rp56.000'], ['Nasi Goreng Hongkong', 'Rp56.000'], ['Nasi Goreng Ikan Asin', 'Rp56.000'], ['Nasi Goreng Jawa', 'Rp56.000'], ['Nasi Goreng Seafood', 'Rp62.000'], ['Nasi Goreng Original', 'Rp56.000'], ['Nasi Goreng Spesial', 'Rp56.000'], ['Nasi Goreng Sosis', 'Rp56.000'], ['Nasi Goreng Cumi', 'Rp56.000'], ['Nasi Goreng Udang', 'Rp56.000'], ['Nasi Putih', 'Rp23.000']] },
+      { number: '03', title: 'Mie & Kwetiaw', image: visuals.noodle, items: [['Mie Goreng', 'Rp56.000'], ['Mie Goreng Spesial', 'Rp56.000'], ['Mie Goreng Udang', 'Rp56.000'], ['Mie Goreng Jawa', 'Rp56.000'], ['Mie Goreng Seafood', 'Rp62.000'], ['Mie Kuah Spesial', 'Rp56.000'], ['Mi Godok', 'Rp53.000'], ['Indomie Telur Kornet "Internet"', 'Rp45.000'], ['Kwetiaw Goreng Spesial', 'Rp56.000'], ['Kwetiaw Goreng Seafood', 'Rp62.000'], ['Bihun Goreng Spesial', 'Rp56.000'], ['Bihun Goreng Seafood', 'Rp62.000']] },
+      { number: '04', title: 'Hot Snack', image: visuals.snack, compact: true, items: [['Chicken Nugget', 'Rp50.000'], ['Chicken Wings', 'Rp62.000'], ['Kentang Goreng', 'Rp50.000'], ['Sosis Goreng', 'Rp62.000'], ['Onion Ring', 'Rp44.000'], ['Pisang Keju', 'Rp37.000'], ['Pisang Keju Coklat', 'Rp37.000'], ['Snack Kombinasi', 'Rp87.000'], ['Cireng', 'Rp37.000'], ['Tempe Mendoan', 'Rp44.000'], ['Tahu Bakso Goreng', 'Rp50.000'], ['Tahu Cabe Garam', 'Rp44.000'], ['Telur Dadar', 'Rp19.000'], ['Telur Mata Sapi', 'Rp19.000'], ['Paru Goreng Crispy', 'Rp83.000'], ['Paru Goreng Pedas', 'Rp83.000'], ['Nachos Cheese', 'Rp58.000'], ['Ote-Ote', 'Rp50.000'], ['Pempek', 'Rp50.000']] },
+      { number: '05', title: 'Food', image: visuals.mainFood, compact: true, items: [['Sop Iga Sapi', 'Rp154.000'], ['Ayam Goreng Tepung', 'Rp58.000'], ['Ayam Goreng Kering', 'Rp58.000'], ['Ayam Goreng Mentega', 'Rp58.000'], ['Ayam Asam Manis', 'Rp58.000'], ['Ayam Saos Inggris', 'Rp58.000'], ['Ayam Saos Teriyaki', 'Rp58.000'], ['Ayam Lada Hitam', 'Rp58.000'], ['Sapi Lada Hitam', 'Rp87.000'], ['Udang Goreng Tepung', 'Rp75.000'], ['Udang Mayonaise', 'Rp75.000'], ['Udang Saos Tiram', 'Rp75.000'], ['Udang Asam Manis', 'Rp75.000'], ['Udang Saos Inggris', 'Rp75.000'], ['Udang Saos Mentega', 'Rp75.000'], ['Udang Saos Teriyaki', 'Rp75.000'], ['Cumi Asam Manis', 'Rp68.000'], ['Cumi Saos Tiram', 'Rp68.000'], ['Cumi Goreng Kering', 'Rp68.000'], ['Cumi Saos Teriyaki', 'Rp68.000'], ['Cumi Saos Inggris', 'Rp68.000'], ['Cumi Saos Mentega', 'Rp68.000'], ['Fu Yung Hai', 'Rp56.000'], ['Cap Cay Goreng', 'Rp56.000'], ['Cap Cay Kuah', 'Rp56.000']] },
+      { number: '06', title: 'Salad & Dessert', image: visuals.dessert, items: [['Salad Buah', 'Rp87.000'], ['Buah Segar', 'Rp87.000'], ['Buah Segar Spesial', 'Rp160.000'], ['Ice Cream Buah', 'Rp56.000']] },
+      { number: '07', title: 'Cancimen', image: visuals.candy, items: [['Frozz', 'Rp25.000'], ['Hexos', 'Rp17.000'], ['Chunky Bar', 'Rp56.000'], ['Cadbury 145gr', 'Rp80.000'], ['SilverQueen', 'Rp43.000'], ['Delfi 125gr', 'Rp80.000'], ['Kacang Bawang', 'Rp37.000'], ['Pringles', 'Rp55.000'], ['Chitato', 'Rp32.000'], ['Qtela', 'Rp35.000']] },
+      { number: '08', title: 'Jus & Milkshake', image: visuals.juice, items: [['Jus Alpokat', 'Rp44.000'], ['Jus Apel', 'Rp44.000'], ['Jus Jeruk', 'Rp44.000'], ['Jus Mangga', 'Rp44.000'], ['Jus Melon', 'Rp44.000'], ['Jus Semangka', 'Rp44.000'], ['Jus Tomat', 'Rp44.000'], ['Jus Sirsak', 'Rp44.000'], ['Jeruk Murni', 'Rp44.000'], ['Milk Shake Coklat', 'Rp47.000'], ['Milk Shake Strawberry', 'Rp47.000'], ['Milk Shake Vanilla', 'Rp47.000']] },
+      { number: '09', title: 'Soft Drink', image: visuals.softDrink, items: [['Coca-Cola Can', 'Rp25.000'], ['Coca-Cola Pitcher', 'Rp92.000'], ['Fanta Merah Can', 'Rp25.000'], ['Fanta Merah Pitcher', 'Rp92.000'], ['Greensands', 'Rp25.000'], ['Pokka Green Tea', 'Rp32.000'], ['Soda Gembira', 'Rp44.000'], ['Sprite Can', 'Rp25.000'], ['Sprite Pitcher', 'Rp92.000'], ['Fanta Susu', 'Rp37.000'], ['Krating Daeng', 'Rp32.000'], ['Pocari Sweat', 'Rp25.000'], ['Pulpy Orange', 'Rp25.000'], ['Yakult', 'Rp10.000']] },
+      { number: '10', title: 'Drink & Coffee', image: visuals.coffee, compact: true, items: [['Air Mineral', 'Rp20.000'], ['Milo Hot', 'Rp37.000'], ['Milo Ice', 'Rp37.000'], ['Es Jeruk', 'Rp44.000'], ['Es Jeruk Nipis', 'Rp44.000'], ['Teh Hot', 'Rp23.000'], ['Es Teh', 'Rp23.000'], ['Jeruk Hot', 'Rp38.700'], ['Jeruk Nipis Hot', 'Rp44.000'], ['Lemon Tea Hot', 'Rp32.000'], ['Lemon Tea Ice', 'Rp32.000'], ['Lemon Tea Pitcher', 'Rp92.000'], ['Susu Putih Hot', 'Rp32.000'], ['Susu Putih Ice', 'Rp32.000'], ['Susu Coklat Hot', 'Rp32.000'], ['Teh Pitcher', 'Rp92.000'], ['Cappuccino', 'Rp35.000'], ['Kopi', 'Rp30.000']] },
+    ].map((page) => ({ ...page, items: page.items.map((item) => Array.isArray(item) ? { name: item[0], price: item[1] } : item) }));
+    const iconSvgs = {
+      whatsapp: '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M11.42 9.49c-.19-.09-1.1-.54-1.27-.61s-.29-.09-.42.1-.48.6-.59.73-.21.14-.4 0a5.13 5.13 0 0 1-1.49-.92 5.25 5.25 0 0 1-1-1.29c-.11-.18 0-.28.08-.38s.18-.21.28-.32a1.39 1.39 0 0 0 .18-.31.38.38 0 0 0 0-.33c0-.09-.42-1-.58-1.37s-.3-.32-.41-.32h-.4a.72.72 0 0 0-.5.23 2.1 2.1 0 0 0-.65 1.55A3.59 3.59 0 0 0 5 8.2 8.32 8.32 0 0 0 8.19 11c.44.19.78.3 1.05.39a2.53 2.53 0 0 0 1.17.07 1.93 1.93 0 0 0 1.26-.88 1.67 1.67 0 0 0 .11-.88c-.05-.07-.17-.12-.36-.21z"/><path d="M13.29 2.68A7.36 7.36 0 0 0 8 .5a7.44 7.44 0 0 0-6.41 11.15l-1 3.85 3.94-1a7.4 7.4 0 0 0 3.55.9H8a7.44 7.44 0 0 0 5.29-12.72zM8 14.12a6.12 6.12 0 0 1-3.15-.87l-.22-.13-2.34.61.62-2.28-.14-.23a6.18 6.18 0 0 1 9.6-7.65 6.12 6.12 0 0 1 1.81 4.37A6.19 6.19 0 0 1 8 14.12z"/></svg>',
+      facebook: '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg>',
+      instagram: '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g><path d="M22.3,8.4c-0.8,0-1.4,0.6-1.4,1.4c0,0.8,0.6,1.4,1.4,1.4c0.8,0,1.4-0.6,1.4-1.4C23.7,9,23.1,8.4,22.3,8.4z"/><path d="M16,10.2c-3.3,0-5.9,2.7-5.9,5.9s2.7,5.9,5.9,5.9s5.9-2.7,5.9-5.9S19.3,10.2,16,10.2z M16,19.9c-2.1,0-3.8-1.7-3.8-3.8   c0-2.1,1.7-3.8,3.8-3.8c2.1,0,3.8,1.7,3.8,3.8C19.8,18.2,18.1,19.9,16,19.9z"/><path d="M20.8,4h-9.5C7.2,4,4,7.2,4,11.2v9.5c0,4,3.2,7.2,7.2,7.2h9.5c4,0,7.2-3.2,7.2-7.2v-9.5C28,7.2,24.8,4,20.8,4z M25.7,20.8   c0,2.7-2.2,5-5,5h-9.5c-2.7,0-5-2.2-5-5v-9.5c0-2.7,2.2-5,5-5h9.5c2.7 0,5 2.2,5 5V20.8z"/></g></svg>',
+    };
+    const app = document.getElementById('app');
+    const socialHtml = socialLinks.map(link => `<a href="${link.href}" target="_blank" rel="noreferrer" aria-label="${link.label}" title="${link.label}">${iconSvgs[link.icon]}</a>`).join('');
+    const pageItemHtml = (item) => `<div class="menu-row"><span class="menu-name">${item.name}</span><span class="menu-price">${item.price}</span></div>`;
+    const pageHtml = (page) => `
+      <section class="a4-page menu-page">
+        <div class="page-frame"></div>
+        <header class="page-header">
+          <div>
+            <p class="text-small font-semibold uppercase tracking-tight text-gold">${page.kicker || 'Happup Antasari'}</p>
+            <h2 class="mt-2 font-serif text-3xl font-bold uppercase leading-tight text-white">${page.title}</h2>
+          </div>
+          <span class="page-number">${page.number}</span>
+        </header>
+        <div class="page-visual">
+          <img src="${page.image}" alt="${page.title}">
+          <div class="visual-overlay"></div>
+          <div class="visual-footer">
+            <p>Premium lounge dining selection for room service and shared moments.</p>
+            <div class="badge">H</div>
+          </div>
+        </div>
+        <div class="menu-section">
+          <div class="flex justify-between border-top-bottom pb-3 text-small font-bold uppercase tracking-tight text-gold" style="display:grid;grid-template-columns:minmax(0,1fr) auto;">
+            <span>Menu</span>
+            <span>Harga</span>
+          </div>
+          <div class="menu-list${page.compact ? ' menu-list-compact' : ''}${page.featured ? ' signature-list' : ''}">
+            ${page.items.map(pageItemHtml).join('')}
+          </div>
+        </div>
+        <footer class="social-links">
+          ${socialHtml}
+        </footer>
+      </section>`;
+    app.innerHTML = `
+      <section class="mx-auto mb-6 max-w-5xl text-center print-hidden sm-mb-8">
+        <p class="text-small font-semibold uppercase tracking-tight text-gold">A4 Portrait Menu Book</p>
+        <h1 class="mt-3 font-serif text-3xl font-bold uppercase leading-tight text-white">HAPPUP ANTASARI</h1>
+        <p class="mt-3 text-sm text-soft">Elegant Premium Karaoke Lounge</p>
+      </section>
+      <div class="mx-auto grid gap-5 gap-8 grid-cols-2" style="max-width: 82.5rem;">
+        <section class="a4-page cover-page">
+          <div class="lounge-glow"></div>
+          <div class="page-frame"></div>
+          <div class="brand-wordmark">HAPPUP KARAOKE</div>
+          <div class="mt-auto pb-6 text-center">
+            <p class="text-small font-semibold uppercase tracking-sm text-glow">Happup Antasari</p>
+            <h2 class="mt-4 font-serif text-4xl font-bold uppercase leading-tight text-white">Premium Karaoke</h2>
+            <p class="mx-auto mt-5 max-w-sm text-lg leading-7 text-soft">Premium Karaoke & Lounge Experience</p>
+            <div class="flex flex-wrap items-center justify-center gap-3 border-top-bottom px-4 py-3 text-small uppercase tracking-sm text-glow" style="border-color: rgba(217, 173, 92, 0.5);">
+              <span>Mic</span>
+              <span class="h-1 w-1 rounded-full" style="background:#d9ad5c; display:inline-block;"></span>
+              <span>Cocktail</span>
+              <span class="h-1 w-1 rounded-full" style="background:#d9ad5c; display:inline-block;"></span>
+              <span>Lounge</span>
+            </div>
+            <div class="social-links">
+              ${socialHtml}
+            </div>
+          </div>
+        </section>
+        ${menuPages.map(pageHtml).join('')}
+        <section class="a4-page cover-page" style="position:relative;">
+          <div class="page-frame"></div>
+          <img src="${visuals.back}" alt="Karaoke lounge room" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.30;">
+          <div style="position:absolute; inset:0; background: radial-gradient(circle at center, rgba(216,169,79,0.2), transparent 38%), linear-gradient(180deg, rgba(13,9,7,0.72), #090706 78%);"></div>
+          <div class="relative" style="z-index:10; margin:auto; max-width:28rem; text-align:center;">
+            <div class="brand-wordmark" style="margin:0 auto;">HAPPUP KARAOKE</div>
+            <p class="mt-10 text-xs font-semibold uppercase tracking-lg text-glow">Thank You</p>
+            <h2 class="mt-5 font-serif text-4xl font-bold uppercase leading-tight text-white">Thank You For Singing With Us</h2>
+            <div class="mt-10" style="display:grid; gap:0.75rem; color:#e8d4b0; font-size:1rem; font-weight:500;">
+              <p>Happup Antasari</p>
+              <p>Premium Karaoke & Lounge Experience</p>
+            </div>
+            <div class="social-links">
+              ${socialHtml}
+            </div>
+          </div>
+        </section>
+      </div>`;
+  </script>
+</body>
+</html>
