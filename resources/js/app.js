@@ -1,9 +1,6 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import '../css/app.css';
-import AlcoholMenuApp from './components/AlcoholMenuApp.vue';
-import MenuBookApp from './components/MenuBookApp.vue';
+import MenuHappup from './components/MenuHappup.vue';
 
-const appComponent = window.location.pathname === '/menu-alkohol' ? AlcoholMenuApp : MenuBookApp;
-
-createApp(appComponent).mount('#app');
+createApp(MenuHappup).mount('#app');

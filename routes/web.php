@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/menu-happup', function () {
+    return view('welcome');
+});
+
 Route::get('/menu-alkohol', function () {
     return view('welcome');
 });
