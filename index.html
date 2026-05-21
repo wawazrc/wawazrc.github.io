@@ -1,308 +1,462 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HAPPUP Antasari | Buku Menu</title>
-  <link rel="preconnect" href="https://fonts.bunny.net" />
-  <link href="https://fonts.bunny.net/css?family=poppins:400,500,600,700|playfair-display:600,700,800|cinzel:600,700|jetbrains-mono:400,500" rel="stylesheet" />
-  <style>
-    :root { color-scheme: dark; }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; min-height: 100vh; font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; background: #100c0a; color: #f8ecd0; }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    .menu-book { background: radial-gradient(circle at 20% 0%, rgba(216, 169, 79, 0.18), transparent 28%), radial-gradient(circle at 84% 18%, rgba(120, 66, 28, 0.2), transparent 28%), linear-gradient(180deg, #160f0b 0%, #090706 100%); min-height: 100vh; padding: 1.25rem 0.75rem; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .mb-6 { margin-bottom: 1.5rem; }
-    .max-w-5xl { max-width: 64rem; }
-    .text-center { text-align: center; }
-    .print-hidden { display: block; }
-    @media print { .print-hidden { display: none; } }
-    .sm-mb-8 { margin-bottom: 2rem; }
-    .text-xs { font-size: 0.75rem; }
-    .text-small { font-size: 0.65rem; }
-    .text-lg { font-size: 1.125rem; }
-    .text-base { font-size: 1rem; }
-    .text-white { color: #fff; }
-    .text-gold { color: #c89949; }
-    .text-soft { color: #cbb99a; }
-    .text-glow { color: #d9ad5c; }
-    .text-highlight { color: #e4b45f; }
-    .font-semibold { font-weight: 600; }
-    .font-bold { font-weight: 700; }
-    .uppercase { text-transform: uppercase; }
-    .leading-tight { line-height: 1.1; }
-    .leading-7 { line-height: 1.75rem; }
-    .tracking-tight { letter-spacing: 0.24em; }
-    .tracking-sm { letter-spacing: 0.22em; }
-    .tracking-lg { letter-spacing: 0.35em; }
-    .mt-3 { margin-top: 0.75rem; }
-    .mt-4 { margin-top: 1rem; }
-    .mt-5 { margin-top: 1.25rem; }
-    .mt-6 { margin-top: 1.5rem; }
-    .mt-7 { margin-top: 1.75rem; }
-    .mt-9 { margin-top: 2.25rem; }
-    .mt-auto { margin-top: auto; }
-    .pt-6 { padding-top: 1.5rem; }
-    .pb-6 { padding-bottom: 1.5rem; }
-    .px-4 { padding-left: 1rem; padding-right: 1rem; }
-    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-    .pb-3 { padding-bottom: 0.75rem; }
-    .pt-6 { padding-top: 1.5rem; }
-    .max-w-sm { max-width: 24rem; }
-    .w-fit { width: fit-content; }
-    .flex { display: flex; }
-    .flex-wrap { flex-wrap: wrap; }
-    .items-center { align-items: center; }
-    .justify-center { justify-content: center; }
-    .gap-3 { gap: 0.75rem; }
-    .gap-4 { gap: 1rem; }
-    .gap-5 { gap: 1.25rem; }
-    .gap-8 { gap: 2rem; }
-    .grid { display: grid; }
-    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .border-top-bottom { border-top: 1px solid rgba(217, 173, 92, 0.5); border-bottom: 1px solid rgba(217, 173, 92, 0.5); }
-    .rounded-full { border-radius: 9999px; }
-    .border-1 { border: 1px solid rgba(216, 169, 79, 0.36); }
-    .page-number { display: grid; place-items: center; width: 3rem; height: 3rem; border: 1px solid rgba(216, 169, 79, 0.62); color: #ffd987; font-family: 'Playfair Display', 'Cinzel', ui-serif, Georgia, Cambria, serif; font-size: 1.35rem; line-height: 1; }
-    .menu-page { flex-direction: column; }
-    .cover-page { flex-direction: column; min-height: min(760px, calc(100svh - 2.5rem)); }
-    .a4-page { position: relative; isolation: isolate; display: flex; width: 100%; min-height: auto; overflow: hidden; padding: 1.5rem; background: radial-gradient(circle at 50% 18%, rgba(216, 169, 79, 0.18), transparent 24%), linear-gradient(145deg, #17110e 0%, #090706 100%); border: 1px solid rgba(216, 169, 79, 0.36); box-shadow: 0 18px 52px rgba(0, 0, 0, 0.42); }
-    .a4-page::before { content: ''; position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(90deg, rgba(216, 169, 79, 0.05) 1px, transparent 1px), linear-gradient(180deg, rgba(216, 169, 79, 0.04) 1px, transparent 1px); background-size: 38px 38px; opacity: 0.35; }
-    .a4-page::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(110deg, transparent 0%, rgba(255, 233, 170, 0.08) 42%, transparent 48%); pointer-events: none; }
-    .page-frame { position: absolute; inset: 0.8rem; border: 1px solid rgba(216, 169, 79, 0.5); pointer-events: none; }
-    .page-frame::before, .page-frame::after { content: ''; position: absolute; width: 4rem; height: 4rem; border: 1px solid rgba(216, 169, 79, 0.35); }
-    .page-frame::before { left: 0.8rem; top: 0.8rem; border-right: 0; border-bottom: 0; }
-    .page-frame::after { right: 0.8rem; bottom: 0.8rem; border-left: 0; border-top: 0; }
-    .lounge-glow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 12%, rgba(255, 210, 129, 0.34), transparent 14%), radial-gradient(circle at 18% 32%, rgba(216, 169, 79, 0.25), transparent 17%), radial-gradient(circle at 82% 34%, rgba(216, 169, 79, 0.24), transparent 17%); filter: blur(2px); }
-    .brand-wordmark { width: fit-content; max-width: 100%; border: 1px solid rgba(216, 169, 79, 0.5); background: rgba(6, 5, 4, 0.5); box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45); color: #ffd987; font-family: 'Playfair Display', 'Cinzel', ui-serif, Georgia, Cambria, serif; font-size: clamp(1.7rem, 7vw, 3.5rem); font-weight: 800; letter-spacing: 0; line-height: 1; padding: 1.1rem 1.4rem; text-align: center; margin-left: auto; margin-right: auto; }
-    .page-visual { position: relative; z-index: 10; margin-top: 1.5rem; overflow: hidden; border: 1px solid rgba(217, 173, 92, 0.35); background: rgba(0, 0, 0, 0.3); }
-    .page-visual img { width: 100%; height: 12rem; object-fit: cover; opacity: 0.8; }
-    .page-visual .visual-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.65)); }
-    .page-visual .visual-footer { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: end; justify-content: space-between; gap: 0.75rem; padding: 1rem; }
-    .page-visual .visual-footer p { max-width: 21rem; margin: 0; color: #f3dfb8; font-size: 0.75rem; line-height: 1.25rem; }
-    .page-visual .visual-footer .badge { width: 3.5rem; height: 3.5rem; border-radius: 9999px; border: 1px solid rgba(217, 173, 92, 0.65); background: rgba(217, 173, 92, 0.15); font-family: 'Playfair Display', 'Cinzel', serif; font-size: 1.5rem; line-height: 3.4rem; text-align: center; color: #ffd987; }
-    .menu-list { display: grid; gap: 0.58rem; margin-top: 1rem; }
-    .menu-list-compact { grid-template-columns: 1fr; row-gap: 0.48rem; }
-    .signature-list { gap: 0.72rem; margin-top: 1.2rem; }
-    .menu-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 0.75rem; border-bottom: 1px solid rgba(216, 169, 79, 0.18); padding-bottom: 0.48rem; }
-    .menu-name { min-width: 0; color: rgba(255, 249, 232, 0.92); font-size: 0.78rem; font-weight: 500; line-height: 1.3; overflow-wrap: anywhere; }
-    .menu-price { color: #e4b45f; font-size: 0.76rem; font-weight: 700; white-space: nowrap; }
-    .signature-list .menu-row { border: 1px solid rgba(216, 169, 79, 0.28); background: rgba(216, 169, 79, 0.08); padding: 0.78rem 0.86rem; }
-    .signature-list .menu-name::before { content: '*'; margin-right: 0.6rem; color: #ffd987; }
-    .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem; margin-top: 1.75rem; }
-    .social-links a { display: grid; place-items: center; width: 2.55rem; height: 2.55rem; border: 1px solid rgba(216, 169, 79, 0.58); border-radius: 999px; background: rgba(216, 169, 79, 0.08); color: #ffd987; transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease; }
-    .social-links a:hover { border-color: rgba(255, 217, 135, 0.9); background: rgba(216, 169, 79, 0.2); transform: translateY(-1px); }
-    .social-links svg { width: 1.12rem; height: 1.12rem; fill: currentColor; }
-    .page-header { display: flex; flex-direction: column; gap: 1rem; }
-    .page-header .title { margin: 0; }
-    .menu-section { margin-top: 1.5rem; }
-    @media (min-width: 640px) {
-      .menu-book { padding: 2rem 1.5rem; }
-      .sm-mb-8 { margin-bottom: 2rem; }
-      .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .a4-page { padding: 3rem; }
-      .cover-page { min-height: 1040px; }
-      .menu-page { min-height: 1040px; aspect-ratio: 210 / 297; }
-      .page-frame { inset: 1.35rem; }
-      .page-frame::before, .page-frame::after { width: 7rem; height: 7rem; }
-      .page-number { width: 4rem; height: 4rem; font-size: 1.8rem; }
-      .menu-list { gap: 0.8rem; }
-      .menu-list-compact { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.4rem; row-gap: 0.58rem; }
-      .signature-list { gap: 1rem; margin-top: 2rem; }
-      .menu-row { gap: 1rem; padding-bottom: 0.65rem; }
-      .menu-name { font-size: 0.95rem; line-height: 1.35; }
-      .menu-price { font-size: 0.9rem; }
-      .signature-list .menu-row { padding: 1rem 1.1rem; }
-      .social-links a { width: 2.75rem; height: 2.75rem; }
-      .social-links svg { width: 1.2rem; height: 1.2rem; }
-    }
-    @media (max-width: 420px) {
-      .a4-page { padding: 1.2rem; }
-      .page-frame { inset: 0.55rem; }
-      .page-frame::before, .page-frame::after { width: 3rem; height: 3rem; }
-      .menu-row { grid-template-columns: minmax(0, 1fr); gap: 0.18rem; }
-      .menu-price { justify-self: start; }
-    }
-    @media (max-width: 768px) {
-      .menu-book { padding: 1rem 0.5rem; }
-      .grid-cols-2 { grid-template-columns: 1fr; }
-      .a4-page { padding: 1.5rem; min-height: auto; }
-      .cover-page { min-height: auto; padding-top: 2rem; padding-bottom: 2rem; }
-      .menu-page { min-height: auto; }
-      .brand-wordmark { font-size: clamp(1.5rem, 6vw, 2.5rem); padding: 0.8rem 1rem; }
-      .page-visual img { height: 8rem; }
-      .page-header .title { font-size: 1.5rem; }
-      .menu-name { font-size: 0.85rem; }
-      .menu-price { font-size: 0.8rem; }
-      .social-links a { width: 2.2rem; height: 2.2rem; }
-      .social-links svg { width: 1rem; height: 1rem; }
-      .text-3xl { font-size: 1.5rem; }
-      .text-4xl { font-size: 1.8rem; }
-      .text-lg { font-size: 1rem; }
-      .gap-8 { gap: 2rem; }
-      .gap-5 { gap: 1.5rem; }
-    }
-    @media (max-width: 480px) {
-      .menu-book { padding: 0.5rem 0.25rem; }
-      .a4-page { padding: 1rem; }
-      .page-frame { inset: 0.4rem; }
-      .page-frame::before, .page-frame::after { width: 2.5rem; height: 2.5rem; }
-      .brand-wordmark { font-size: clamp(1.2rem, 5vw, 2rem); padding: 0.6rem 0.8rem; }
-      .page-visual img { height: 6rem; }
-      .page-header { gap: 0.5rem; }
-      .page-header .title { font-size: 1.2rem; }
-      .menu-list { gap: 0.4rem; margin-top: 0.8rem; }
-      .menu-row { padding-bottom: 0.3rem; gap: 0.5rem; }
-      .menu-name { font-size: 0.75rem; line-height: 1.2; }
-      .menu-price { font-size: 0.7rem; }
-      .social-links { gap: 0.5rem; margin-top: 1.25rem; }
-      .social-links a { width: 2rem; height: 2rem; }
-      .social-links svg { width: 0.9rem; height: 0.9rem; }
-      .text-3xl { font-size: 1.2rem; }
-      .text-4xl { font-size: 1.5rem; }
-      .text-lg { font-size: 0.9rem; }
-      .text-small { font-size: 0.6rem; }
-      .text-xs { font-size: 0.55rem; }
-      .mt-3 { margin-top: 0.5rem; }
-      .mt-4 { margin-top: 0.75rem; }
-      .mt-5 { margin-top: 1rem; }
-      .pb-6 { padding-bottom: 1rem; }
-      .pt-6 { padding-top: 1rem; }
-    }
-    @media print {
-      .menu-book { background: #fff; padding: 0; }
-      .a4-page { width: 210mm; min-height: 297mm; box-shadow: none; break-after: page; page-break-after: always; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Menu Happy Puppy Antasari</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+            max-width: 540px; /* Membuat layout terkunci seperti tampilan aplikasi HP */
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
+            background-color: #ffffff;
+        }
+
+        /* Top Bar & Branding */
+        .top-banner {
+            width: 100%;
+            height: 140px;
+            background: url('https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=600') no-repeat center center;
+            background-size: cover;
+        }
+        .brand-section {
+            text-align: center;
+            padding: 15px 10px;
+            background: #ffffff;
+            border-bottom: 1px solid #eee;
+        }
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+            color: #222;
+        }
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: #888;
+            letter-spacing: 1px;
+        }
+
+        /* Kategori Menu / Nav Bar */
+        .category-container {
+            position: sticky;
+            top: 0;
+            background: #f8f9fa;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eef0f2;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            border-radius: 999px;
+            padding: 8px 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e8ebee;
+        }
+        .search-icon {
+            color: #666;
+            font-size: 1rem;
+        }
+        .search-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 0.95rem;
+            color: #333;
+            background: transparent;
+        }
+        .category-scroll {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            white-space: nowrap;
+            width: 100%;
+            scrollbar-width: none; /* Sembunyikan scrollbar Firefox */
+        }
+        .category-scroll::-webkit-scrollbar {
+            display: none; /* Sembunyikan scrollbar Chrome/Safari */
+        }
+        .category-item {
+            color: #777;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+            background: none;
+            border: none;
+        }
+        .category-item.active {
+            color: #e05345;
+            border-bottom: 2px solid #e05345;
+        }
+
+        /* Highlight / Feature Card */
+        .highlight-container {
+            padding: 15px;
+        }
+        .highlight-card {
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eaeaea;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+        .highlight-img {
+            width: 100%;
+            height: 120px;
+            background: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=600') no-repeat center center;
+            background-size: cover;
+            border-radius: 24px 24px 0 0;
+        }
+        .highlight-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            margin-top: 15px;
+            color: #333;
+        }
+        .highlight-subtitle {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* List Menu */
+        .menu-list-container {
+            padding: 0 15px 30px 15px;
+        }
+        .menu-group-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 24px 0 8px;
+            color: #2a2a2a;
+        }
+        .menu-card {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        .menu-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            background-color: #eee;
+        }
+        .menu-details {
+            flex-grow: 1;
+        }
+        .menu-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 2px;
+        }
+        .menu-desc {
+            font-size: 0.78rem;
+            color: #888;
+            margin-bottom: 0;
+            line-height: 1.2;
+        }
+        .menu-price {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e05345;
+            text-align: right;
+            padding-left: 10px;
+        }
+    </style>
 </head>
 <body>
-  <main id="app" class="menu-book"></main>
-  <script>
-    const socialLinks = [
-      { label: 'WhatsApp', href: 'https://wa.me/6282148004822', icon: 'whatsapp' },
-      { label: 'Facebook', href: 'https://www.facebook.com/happup.samarinda.antasari', icon: 'facebook' },
-      { label: 'Instagram', href: 'https://www.instagram.com/happup.samarinda.antasari/', icon: 'instagram' },
-    ];
-    const visuals = {
-      signature: 'https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      friedRice: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=1000',
-      noodle: 'https://images.pexels.com/photos/2347311/pexels-photo-2347311.jpeg?auto=compress&cs=tinysrgb&w=1000',
-      snack: 'https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=1000',
-      mainFood: 'https://images.pexels.com/photos/2338407/pexels-photo-2338407.jpeg?auto=compress&cs=tinysrgb&w=1000',
-      dessert: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=1000',
-      candy: 'https://images.pexels.com/photos/4791261/pexels-photo-4791261.jpeg?auto=compress&cs=tinysrgb&w=1000',
-      juice: 'https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg?auto=compress&cs=tinysrgb&w=1000',
-      softDrink: 'https://images.pexels.com/photos/2775860/pexels-photo-2775860.jpeg?auto=compress&cs=tinysrgb&w=1000',
-      coffee: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=1000',
-      back: 'https://images.pexels.com/photos/3201922/pexels-photo-3201922.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    };
-    const recommended = [
-      'Nasi Goreng Seafood',
-      'Sop Iga Sapi',
-      'Chicken Wings',
-      'Udang Mayonaise',
-      'Salad Buah Spesial',
-    ];
-    const menuPages = [
-      { number: '01', title: 'Signature Menu', kicker: 'Recommended Menu', image: visuals.signature, featured: true, items: recommended.map((name) => ({ name, price: 'Recommended' })) },
-      { number: '02', title: 'Nasi Goreng', image: visuals.friedRice, items: [['Nasi Cap Cay', 'Rp56.000'], ['Nasi Goreng Ayam', 'Rp56.000'], ['Nasi Goreng Hongkong', 'Rp56.000'], ['Nasi Goreng Ikan Asin', 'Rp56.000'], ['Nasi Goreng Jawa', 'Rp56.000'], ['Nasi Goreng Seafood', 'Rp62.000'], ['Nasi Goreng Original', 'Rp56.000'], ['Nasi Goreng Spesial', 'Rp56.000'], ['Nasi Goreng Sosis', 'Rp56.000'], ['Nasi Goreng Cumi', 'Rp56.000'], ['Nasi Goreng Udang', 'Rp56.000'], ['Nasi Putih', 'Rp23.000']] },
-      { number: '03', title: 'Mie & Kwetiaw', image: visuals.noodle, items: [['Mie Goreng', 'Rp56.000'], ['Mie Goreng Spesial', 'Rp56.000'], ['Mie Goreng Udang', 'Rp56.000'], ['Mie Goreng Jawa', 'Rp56.000'], ['Mie Goreng Seafood', 'Rp62.000'], ['Mie Kuah Spesial', 'Rp56.000'], ['Mi Godok', 'Rp53.000'], ['Indomie Telur Kornet "Internet"', 'Rp45.000'], ['Kwetiaw Goreng Spesial', 'Rp56.000'], ['Kwetiaw Goreng Seafood', 'Rp62.000'], ['Bihun Goreng Spesial', 'Rp56.000'], ['Bihun Goreng Seafood', 'Rp62.000']] },
-      { number: '04', title: 'Hot Snack', image: visuals.snack, compact: true, items: [['Chicken Nugget', 'Rp50.000'], ['Chicken Wings', 'Rp62.000'], ['Kentang Goreng', 'Rp50.000'], ['Sosis Goreng', 'Rp62.000'], ['Onion Ring', 'Rp44.000'], ['Pisang Keju', 'Rp37.000'], ['Pisang Keju Coklat', 'Rp37.000'], ['Snack Kombinasi', 'Rp87.000'], ['Cireng', 'Rp37.000'], ['Tempe Mendoan', 'Rp44.000'], ['Tahu Bakso Goreng', 'Rp50.000'], ['Tahu Cabe Garam', 'Rp44.000'], ['Telur Dadar', 'Rp19.000'], ['Telur Mata Sapi', 'Rp19.000'], ['Paru Goreng Crispy', 'Rp83.000'], ['Paru Goreng Pedas', 'Rp83.000'], ['Nachos Cheese', 'Rp58.000'], ['Ote-Ote', 'Rp50.000'], ['Pempek', 'Rp50.000']] },
-      { number: '05', title: 'Food', image: visuals.mainFood, compact: true, items: [['Sop Iga Sapi', 'Rp154.000'], ['Ayam Goreng Tepung', 'Rp58.000'], ['Ayam Goreng Kering', 'Rp58.000'], ['Ayam Goreng Mentega', 'Rp58.000'], ['Ayam Asam Manis', 'Rp58.000'], ['Ayam Saos Inggris', 'Rp58.000'], ['Ayam Saos Teriyaki', 'Rp58.000'], ['Ayam Lada Hitam', 'Rp58.000'], ['Sapi Lada Hitam', 'Rp87.000'], ['Udang Goreng Tepung', 'Rp75.000'], ['Udang Mayonaise', 'Rp75.000'], ['Udang Saos Tiram', 'Rp75.000'], ['Udang Asam Manis', 'Rp75.000'], ['Udang Saos Inggris', 'Rp75.000'], ['Udang Saos Mentega', 'Rp75.000'], ['Udang Saos Teriyaki', 'Rp75.000'], ['Cumi Asam Manis', 'Rp68.000'], ['Cumi Saos Tiram', 'Rp68.000'], ['Cumi Goreng Kering', 'Rp68.000'], ['Cumi Saos Teriyaki', 'Rp68.000'], ['Cumi Saos Inggris', 'Rp68.000'], ['Cumi Saos Mentega', 'Rp68.000'], ['Fu Yung Hai', 'Rp56.000'], ['Cap Cay Goreng', 'Rp56.000'], ['Cap Cay Kuah', 'Rp56.000']] },
-      { number: '06', title: 'Salad & Dessert', image: visuals.dessert, items: [['Salad Buah', 'Rp87.000'], ['Buah Segar', 'Rp87.000'], ['Buah Segar Spesial', 'Rp160.000'], ['Ice Cream Buah', 'Rp56.000']] },
-      { number: '07', title: 'Cancimen', image: visuals.candy, items: [['Frozz', 'Rp25.000'], ['Hexos', 'Rp17.000'], ['Chunky Bar', 'Rp56.000'], ['Cadbury 145gr', 'Rp80.000'], ['SilverQueen', 'Rp43.000'], ['Delfi 125gr', 'Rp80.000'], ['Kacang Bawang', 'Rp37.000'], ['Pringles', 'Rp55.000'], ['Chitato', 'Rp32.000'], ['Qtela', 'Rp35.000']] },
-      { number: '08', title: 'Jus & Milkshake', image: visuals.juice, items: [['Jus Alpokat', 'Rp44.000'], ['Jus Apel', 'Rp44.000'], ['Jus Jeruk', 'Rp44.000'], ['Jus Mangga', 'Rp44.000'], ['Jus Melon', 'Rp44.000'], ['Jus Semangka', 'Rp44.000'], ['Jus Tomat', 'Rp44.000'], ['Jus Sirsak', 'Rp44.000'], ['Jeruk Murni', 'Rp44.000'], ['Milk Shake Coklat', 'Rp47.000'], ['Milk Shake Strawberry', 'Rp47.000'], ['Milk Shake Vanilla', 'Rp47.000']] },
-      { number: '09', title: 'Soft Drink', image: visuals.softDrink, items: [['Coca-Cola Can', 'Rp25.000'], ['Coca-Cola Pitcher', 'Rp92.000'], ['Fanta Merah Can', 'Rp25.000'], ['Fanta Merah Pitcher', 'Rp92.000'], ['Greensands', 'Rp25.000'], ['Pokka Green Tea', 'Rp32.000'], ['Soda Gembira', 'Rp44.000'], ['Sprite Can', 'Rp25.000'], ['Sprite Pitcher', 'Rp92.000'], ['Fanta Susu', 'Rp37.000'], ['Krating Daeng', 'Rp32.000'], ['Pocari Sweat', 'Rp25.000'], ['Pulpy Orange', 'Rp25.000'], ['Yakult', 'Rp10.000']] },
-      { number: '10', title: 'Drink & Coffee', image: visuals.coffee, compact: true, items: [['Air Mineral', 'Rp20.000'], ['Milo Hot', 'Rp37.000'], ['Milo Ice', 'Rp37.000'], ['Es Jeruk', 'Rp44.000'], ['Es Jeruk Nipis', 'Rp44.000'], ['Teh Hot', 'Rp23.000'], ['Es Teh', 'Rp23.000'], ['Jeruk Hot', 'Rp38.700'], ['Jeruk Nipis Hot', 'Rp44.000'], ['Lemon Tea Hot', 'Rp32.000'], ['Lemon Tea Ice', 'Rp32.000'], ['Lemon Tea Pitcher', 'Rp92.000'], ['Susu Putih Hot', 'Rp32.000'], ['Susu Putih Ice', 'Rp32.000'], ['Susu Coklat Hot', 'Rp32.000'], ['Teh Pitcher', 'Rp92.000'], ['Cappuccino', 'Rp35.000'], ['Kopi', 'Rp30.000']] },
-    ].map((page) => ({ ...page, items: page.items.map((item) => Array.isArray(item) ? { name: item[0], price: item[1] } : item) }));
-    const iconSvgs = {
-      whatsapp: '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M11.42 9.49c-.19-.09-1.1-.54-1.27-.61s-.29-.09-.42.1-.48.6-.59.73-.21.14-.4 0a5.13 5.13 0 0 1-1.49-.92 5.25 5.25 0 0 1-1-1.29c-.11-.18 0-.28.08-.38s.18-.21.28-.32a1.39 1.39 0 0 0 .18-.31.38.38 0 0 0 0-.33c0-.09-.42-1-.58-1.37s-.3-.32-.41-.32h-.4a.72.72 0 0 0-.5.23 2.1 2.1 0 0 0-.65 1.55A3.59 3.59 0 0 0 5 8.2 8.32 8.32 0 0 0 8.19 11c.44.19.78.3 1.05.39a2.53 2.53 0 0 0 1.17.07 1.93 1.93 0 0 0 1.26-.88 1.67 1.67 0 0 0 .11-.88c-.05-.07-.17-.12-.36-.21z"/><path d="M13.29 2.68A7.36 7.36 0 0 0 8 .5a7.44 7.44 0 0 0-6.41 11.15l-1 3.85 3.94-1a7.4 7.4 0 0 0 3.55.9H8a7.44 7.44 0 0 0 5.29-12.72zM8 14.12a6.12 6.12 0 0 1-3.15-.87l-.22-.13-2.34.61.62-2.28-.14-.23a6.18 6.18 0 0 1 9.6-7.65 6.12 6.12 0 0 1 1.81 4.37A6.19 6.19 0 0 1 8 14.12z"/></svg>',
-      facebook: '<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg>',
-      instagram: '<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g><path d="M22.3,8.4c-0.8,0-1.4,0.6-1.4,1.4c0,0.8,0.6,1.4,1.4,1.4c0.8,0,1.4-0.6,1.4-1.4C23.7,9,23.1,8.4,22.3,8.4z"/><path d="M16,10.2c-3.3,0-5.9,2.7-5.9,5.9s2.7,5.9,5.9,5.9s5.9-2.7,5.9-5.9S19.3,10.2,16,10.2z M16,19.9c-2.1,0-3.8-1.7-3.8-3.8   c0-2.1,1.7-3.8,3.8-3.8c2.1,0,3.8,1.7,3.8,3.8C19.8,18.2,18.1,19.9,16,19.9z"/><path d="M20.8,4h-9.5C7.2,4,4,7.2,4,11.2v9.5c0,4,3.2,7.2,7.2,7.2h9.5c4,0,7.2-3.2,7.2-7.2v-9.5C28,7.2,24.8,4,20.8,4z M25.7,20.8   c0,2.7-2.2,5-5,5h-9.5c-2.7,0-5-2.2-5-5v-9.5c0-2.7,2.2-5,5-5h9.5c2.7 0,5 2.2,5 5V20.8z"/></g></svg>',
-    };
-    const app = document.getElementById('app');
-    const socialHtml = socialLinks.map(link => `<a href="${link.href}" target="_blank" rel="noreferrer" aria-label="${link.label}" title="${link.label}">${iconSvgs[link.icon]}</a>`).join('');
-    const pageItemHtml = (item) => `<div class="menu-row"><span class="menu-name">${item.name}</span><span class="menu-price">${item.price}</span></div>`;
-    const pageHtml = (page) => `
-      <section class="a4-page menu-page">
-        <div class="page-frame"></div>
-        <header class="page-header">
-          <div>
-            <p class="text-small font-semibold uppercase tracking-tight text-gold">${page.kicker || 'Happup Antasari'}</p>
-            <h2 class="mt-2 font-serif text-3xl font-bold uppercase leading-tight text-white">${page.title}</h2>
-          </div>
-          <span class="page-number">${page.number}</span>
-        </header>
-        <div class="page-visual">
-          <img src="${page.image}" alt="${page.title}">
-          <div class="visual-overlay"></div>
-          <div class="visual-footer">
-            <p>Premium lounge dining selection for room service and shared moments.</p>
-            <div class="badge">H</div>
-          </div>
+
+    <div class="top-banner"></div>
+
+    <div class="brand-section">
+        <div class="brand-title">Happy Puppy Antasari</div>
+        <div class="brand-subtitle">Karaoke - Bar - Cafe</div>
+    </div>
+
+    <div class="category-container">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="search" class="search-input" placeholder="Cari menu..." aria-label="Cari menu" oninput="searchMenu(this.value)">
         </div>
-        <div class="menu-section">
-          <div class="flex justify-between border-top-bottom pb-3 text-small font-bold uppercase tracking-tight text-gold" style="display:grid;grid-template-columns:minmax(0,1fr) auto;">
-            <span>Menu</span>
-            <span>Harga</span>
-          </div>
-          <div class="menu-list${page.compact ? ' menu-list-compact' : ''}${page.featured ? ' signature-list' : ''}">
-            ${page.items.map(pageItemHtml).join('')}
-          </div>
+        <div class="category-scroll">
+            <button class="category-item active" onclick="switchCategory('all', this)">Semua</button>
+            <button class="category-item" onclick="switchCategory('nasi-goreng', this)">Nasi Goreng</button>
+            <button class="category-item" onclick="switchCategory('mie-kwetiaw', this)">Mie & Kwetiaw</button>
+            <button class="category-item" onclick="switchCategory('hot-snack', this)">Hot Snack</button>
+            <button class="category-item" onclick="switchCategory('food', this)">Food</button>
+            <button class="category-item" onclick="switchCategory('salad-dessert', this)">Salad & Dessert</button>
+            <button class="category-item" onclick="switchCategory('cancimen', this)">Cancimen</button>
+            <button class="category-item" onclick="switchCategory('jus-milkshake', this)">Jus & Milkshake</button>
+            <button class="category-item" onclick="switchCategory('soft-drink', this)">Soft Drink</button>
+            <button class="category-item" onclick="switchCategory('drink-coffee', this)">Drink & Coffee</button>
         </div>
-        <footer class="social-links">
-          ${socialHtml}
-        </footer>
-      </section>`;
-    app.innerHTML = `
-      <section class="mx-auto mb-6 max-w-5xl text-center print-hidden sm-mb-8">
-        <p class="text-small font-semibold uppercase tracking-tight text-gold">A4 Portrait Menu Book</p>
-        <h1 class="mt-3 font-serif text-3xl font-bold uppercase leading-tight text-white">HAPPUP ANTASARI</h1>
-        <p class="mt-3 text-sm text-soft">Elegant Premium Karaoke Lounge</p>
-      </section>
-      <div class="mx-auto grid gap-5 gap-8 grid-cols-2" style="max-width: 82.5rem;">
-        <section class="a4-page cover-page">
-          <div class="lounge-glow"></div>
-          <div class="page-frame"></div>
-          <div class="brand-wordmark">HAPPUP KARAOKE</div>
-          <div class="mt-auto pb-6 text-center">
-            <p class="text-small font-semibold uppercase tracking-sm text-glow">Happup Antasari</p>
-            <h2 class="mt-4 font-serif text-4xl font-bold uppercase leading-tight text-white">Premium Karaoke</h2>
-            <p class="mx-auto mt-5 max-w-sm text-lg leading-7 text-soft">Premium Karaoke & Lounge Experience</p>
-            <div class="flex flex-wrap items-center justify-center gap-3 border-top-bottom px-4 py-3 text-small uppercase tracking-sm text-glow" style="border-color: rgba(217, 173, 92, 0.5);">
-              <span>Mic</span>
-              <span class="h-1 w-1 rounded-full" style="background:#d9ad5c; display:inline-block;"></span>
-              <span>Cocktail</span>
-              <span class="h-1 w-1 rounded-full" style="background:#d9ad5c; display:inline-block;"></span>
-              <span>Lounge</span>
-            </div>
-            <div class="social-links">
-              ${socialHtml}
-            </div>
-          </div>
-        </section>
-        ${menuPages.map(pageHtml).join('')}
-        <section class="a4-page cover-page" style="position:relative;">
-          <div class="page-frame"></div>
-          <img src="${visuals.back}" alt="Karaoke lounge room" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.30;">
-          <div style="position:absolute; inset:0; background: radial-gradient(circle at center, rgba(216,169,79,0.2), transparent 38%), linear-gradient(180deg, rgba(13,9,7,0.72), #090706 78%);"></div>
-          <div class="relative" style="z-index:10; margin:auto; max-width:28rem; text-align:center;">
-            <div class="brand-wordmark" style="margin:0 auto;">HAPPUP KARAOKE</div>
-            <p class="mt-10 text-xs font-semibold uppercase tracking-lg text-glow">Thank You</p>
-            <h2 class="mt-5 font-serif text-4xl font-bold uppercase leading-tight text-white">Thank You For Singing With Us</h2>
-            <div class="mt-10" style="display:grid; gap:0.75rem; color:#e8d4b0; font-size:1rem; font-weight:500;">
-              <p>Happup Antasari</p>
-              <p>Premium Karaoke & Lounge Experience</p>
-            </div>
-            <div class="social-links">
-              ${socialHtml}
-            </div>
-          </div>
-        </section>
-      </div>`;
-  </script>
+    </div>
+
+    <div class="highlight-container">
+        <div class="highlight-card">
+            <div class="highlight-img"></div>
+            <div class="highlight-title">✨ Menu Pilihan Terbaik</div>
+            <div class="highlight-subtitle">Dibuat segar dengan bahan premium pilihan</div>
+        </div>
+    </div>
+
+    <div class="menu-list-container">
+        
+        <div class="menu-group" id="nasi-goreng">
+            <div class="menu-group-title">Nasi Goreng & Nasi Putih</div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Cap Cay</div><div class="menu-desc">Nasi dengan sayuran capcay segar melimpah</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Ayam</div><div class="menu-desc">Nasi goreng gurih dengan suwiran ayam</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Hongkong</div><div class="menu-desc">Nasi goreng putih khas Hongkong oriental</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Ikan Asin</div><div class="menu-desc">Aroma ikan asin yang menggugah selera</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Jawa</div><div class="menu-desc">Nasi goreng manis gurih bumbu jawa tradisional</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Seafood</div><div class="menu-desc">Kombinasi udang dan cumi segar</div></div><div class="menu-price">Rp62.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Original</div><div class="menu-desc">Rasa klasik standar yang selalu disukai</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Spesial</div><div class="menu-desc">Komplit dengan telur dan ekstra topping</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Sosis</div><div class="menu-desc">Potongan sosis premium melimpah</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Cumi</div><div class="menu-desc">Topping cumi kenyal empuk gurih</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Goreng Udang</div><div class="menu-desc">Udang segar manis gurih manis</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nasi Putih</div><div class="menu-desc">Nasi putih hangat pulen</div></div><div class="menu-price">Rp23.000</div></div>
+        </div>
+
+        <div class="menu-group" id="mie-kwetiaw">
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Mie Goreng</div><div class="menu-desc">Mie goreng bumbu kecap gurih</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Mie Goreng Spesial</div><div class="menu-desc">Mie goreng dengan tambahan telur mata sapi</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Mie Goreng Udang</div><div class="menu-desc">Mie goreng dengan topping udang segar</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Mie Goreng Jawa</div><div class="menu-desc">Mie dengan kuah nyemek khas Jawa</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Mie Goreng Seafood</div><div class="menu-desc">Mie goreng isi cumi, udang dan bakso ikan</div></div><div class="menu-price">Rp62.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Mie Kuah Spesial</div><div class="menu-desc">Kuah hangat bumbu rempah spesial</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Mi Godok</div><div class="menu-desc">Mie rebus tradisional bumbu gurih kemiri</div></div><div class="menu-price">Rp53.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Indomie Telur Kornet (“Internet”)</div><div class="menu-desc">Kombinasi legendaris favorit semua kalangan</div></div><div class="menu-price">Rp45.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Kwetiaw Goreng Spesial</div><div class="menu-desc">Kwetiaw kenyal gurih dengan isian lengkap</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Kwetiaw Goreng Seafood</div><div class="menu-desc">Kwetiaw lezat dengan udang dan cumi segar</div></div><div class="menu-price">Rp62.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Bihun Goreng Spesial</div><div class="menu-desc">Bihun lembut dengan cita rasa gurih khas</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Bihun Goreng Seafood</div><div class="menu-desc">Bihun goreng dengan aneka hidangan laut</div></div><div class="menu-price">Rp62.000</div></div>
+        </div>
+
+        <div class="menu-group" id="hot-snack">
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Chicken Nugget</div><div class="menu-desc">Nugget ayam goreng krispi</div></div><div class="menu-price">Rp50.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Chicken Wings</div><div class="menu-desc">Sayap ayam berbumbu saus spesial</div></div><div class="menu-price">Rp62.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Kentang Goreng</div><div class="menu-desc">French fries renyah dengan taburan garam</div></div><div class="menu-price">Rp50.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Sosis Goreng</div><div class="menu-desc">Sosis sapi goreng ukuran besar</div></div><div class="menu-price">Rp62.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Onion Ring</div><div class="menu-desc">Bawang bombay goreng tepung renyah</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Pisang Keju</div><div class="menu-desc">Pisang goreng manis dengan parutan keju</div></div><div class="menu-price">Rp37.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Pisang Keju Coklat</div><div class="menu-desc">Manis gurih perpaduan meses dan keju</div></div><div class="menu-price">Rp37.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Snack Kombinasi</div><div class="menu-desc">Platter isi aneka snack goreng untuk sharing</div></div><div class="menu-price">Rp87.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cireng</div><div class="menu-desc">Cireng hangat kenyal dengan bumbu rujak</div></div><div class="menu-price">Rp37.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Tempe Mendoan</div><div class="menu-desc">Tempe tepung lebar khas Banyumas ditambah sambal kecap</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Tahu Bakso Goreng</div><div class="menu-desc">Tahu isi bakso daging padat gurih</div></div><div class="menu-price">Rp50.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Tahu Cabe Garam</div><div class="menu-desc">Tahu krispi potong dadu bumbu pedas asin</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Telur Dadar</div><div class="menu-desc">Telur dadar goreng gurih ala rumahan</div></div><div class="menu-price">Rp19.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Telur Mata Sapi</div><div class="menu-desc">Telur ceplok matang / setengah matang</div></div><div class="menu-price">Rp19.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Paru Goreng Crispy</div><div class="menu-desc">Paru sapi iris tipis goreng garing renyah</div></div><div class="menu-price">Rp83.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Paru Goreng Pedas</div><div class="menu-desc">Paru goreng empuk tumis sambal balado</div></div><div class="menu-price">Rp83.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Nachos Cheese</div><div class="menu-desc">Kripik jagung renyah dengan siraman saus keju</div></div><div class="menu-price">Rp58.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Ote-Ote</div><div class="menu-desc">Bakwan sayur goreng hangat garing</div></div><div class="menu-price">Rp50.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Pempek</div><div class="menu-desc">Pempek ikan asli disajikan dengan kuah cuko mantap</div></div><div class="menu-price">Rp50.000</div></div>
+        </div>
+
+        <div class="menu-group" id="food">
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Sop Iga Sapi</div><div class="menu-desc">Iga sapi empuk dengan kuah kaldu bening gurih</div></div><div class="menu-price">Rp154.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Ayam Goreng Tepung</div><div class="menu-desc">Ayam krispi gaya oriental</div></div><div class="menu-price">Rp58.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Ayam Goreng Kering</div><div class="menu-desc">Ayam goreng bumbu tradisional tanpa tepung</div></div><div class="menu-price">Rp58.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Ayam Goreng Mentega</div><div class="menu-desc">Ayam goreng berbalut saus mentega gurih manis</div></div><div class="menu-price">Rp58.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Ayam Asam Manis</div><div class="menu-desc">Potongan ayam fillet saus asam manis segar</div></div><div class="menu-price">Rp58.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Ayam Saos Inggris</div><div class="menu-desc">Cita rasa gurih harum saus inggris</div></div><div class="menu-price">Rp58.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Ayam Saos Teriyaki</div><div class="menu-desc">Ayam fillet bumbu teriyaki manis ala jepang</div></div><div class="menu-price">Rp58.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Ayam Lada Hitam</div><div class="menu-desc">Pedas hangat bumbu lada hitam meresap</div></div><div class="menu-price">Rp58.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Sapi Lada Hitam</div><div class="menu-desc">Daging sapi pilihan berpadu saus lada hitam</div></div><div class="menu-price">Rp87.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Udang Goreng Tepung</div><div class="menu-desc">Udang krispi renyah di luar, lembut di dalam</div></div><div class="menu-price">Rp75.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Udang Mayonaise</div><div class="menu-desc">Udang goreng crispy dilumuri mayo manis gurih</div></div><div class="menu-price">Rp75.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Udang Saos Tiram</div><div class="menu-desc">Udang tumis saus tiram gurih pekat</div></div><div class="menu-price">Rp75.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Udang Asam Manis</div><div class="menu-desc">Udang segar dengan balutan saus asam manis nanas</div></div><div class="menu-price">Rp75.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Udang Saos Inggris</div><div class="menu-desc">Cita rasa gurih saus inggris berpadu kelezatan udang</div></div><div class="menu-price">Rp75.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Udang Saos Mentega</div><div class="menu-desc">Tumis udang mentega wangi gurih</div></div><div class="menu-price">Rp75.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Udang Saos Teriyaki</div><div class="menu-desc">Udang dengan saus teriyaki gurih oriental</div></div><div class="menu-price">Rp75.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cumi Asam Manis</div><div class="menu-desc">Cumi kenyal segar bertabur saus asam manis</div></div><div class="menu-price">Rp68.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cumi Saos Tiram</div><div class="menu-desc">Cumi tumis bumbu saus tiram kental</div></div><div class="menu-price">Rp68.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cumi Goreng Kering</div><div class="menu-desc">Cumi goreng renyah bumbu bawang ketumbar</div></div><div class="menu-price">Rp68.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cumi Saos Teriyaki</div><div class="menu-desc">Cumi berbalut bumbu teriyaki jepang manis</div></div><div class="menu-price">Rp68.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cumi Saos Inggris</div><div class="menu-desc">Cumi tumis dengan worcestershire sauce wangi</div></div><div class="menu-price">Rp68.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cumi Saos Mentega</div><div class="menu-desc">Cumi wangi saus mentega bawang</div></div><div class="menu-price">Rp68.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Fu Yung Hai</div><div class="menu-desc">Telur dadar tebal isi sayur & daging siram saus tomat</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cap Cay Goreng</div><div class="menu-desc">Aneka sayur tumis kental gurih oriental</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cap Cay Kuah</div><div class="menu-desc">Sayuran segar dengan kuah kaldu hangat melimpah</div></div><div class="menu-price">Rp56.000</div></div>
+        </div>
+
+        <div class="menu-group" id="salad-dessert">
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Salad Buah</div><div class="menu-desc">Potongan buah segar saus mayo manis tabur keju</div></div><div class="menu-price">Rp87.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Buah Segar</div><div class="menu-desc">Platter buah potong dingin segar</div></div><div class="menu-price">Rp87.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Buah Segar Spesial</div><div class="menu-desc">Porsi besar buah premium pilihan lengkap</div></div><div class="menu-price">Rp160.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Ice Cream Buah</div><div class="menu-desc">Es krim lembut dipadu buah segar manis</div></div><div class="menu-price">Rp56.000</div></div>
+        </div>
+
+        <div class="menu-group" id="cancimen">
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Frozz</div><div class="menu-desc">Permen mint penyegar mulut bebas gula</div></div><div class="menu-price">Rp25.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Hexos</div><div class="menu-desc">Permen pelega tenggorokan rasa mint lemon</div></div><div class="menu-price">Rp17.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Chunky Bar</div><div class="menu-desc">Cokelat chunky isi kacang mete renyah</div></div><div class="menu-price">Rp56.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cadbury 145gr</div><div class="menu-desc">Cokelat susu lembut ukuran besar pas untuk dinikmati</div></div><div class="menu-price">Rp80.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">SilverQueen</div><div class="menu-desc">Cokelat batangan ikonik dengan kacang almond/mete</div></div><div class="menu-price">Rp43.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Delfi 125gr</div><div class="menu-desc">Cokelat premium citarasa khas eropa</div></div><div class="menu-price">Rp80.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Kacang Bawang</div><div class="menu-desc">Camilan kacang bawang gurih garing</div></div><div class="menu-price">Rp37.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Pringles</div><div class="menu-desc">Keripik kentang tabung rasa original/BBQ</div></div><div class="menu-price">Rp55.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Chitato</div><div class="menu-desc">Keripik kentang bergelombang rasa sapi panggang</div></div><div class="menu-price">Rp32.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1581798459219-318e76ae11b7?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Qtela</div><div class="menu-desc">Keripik singkong tradisional renyah rasa bawang</div></div><div class="menu-price">Rp35.000</div></div>
+        </div>
+
+        <div class="menu-group" id="jus-milkshake">
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jus Alpokat</div><div class="menu-desc">Jus alpukat kental dengan saus cokelat manis</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jus Apel</div><div class="menu-desc">Ekstrak apel segar murni dingin</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jus Jeruk</div><div class="menu-desc">Kaya vitamin C dari jeruk peras murni</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jus Mangga</div><div class="menu-desc">Jus mangga manis harum tekstur lembut</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jus Melon</div><div class="menu-desc">Melon hijau manis di-blender halus</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jus Semangka</div><div class="menu-desc">Semangka merah kaya air sangat menyegarkan</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jus Tomat</div><div class="menu-desc">Jus tomat merah segar sehat bergizi</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jus Sirsak</div><div class="menu-desc">Sirsak putih rasa manis asam khas menyegarkan</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jeruk Murni</div><div class="menu-desc">100% perasan jeruk asli dingin tanpa air tambahan</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Milk Shake Coklat</div><div class="menu-desc">Susu kocok cokelat premium dengan ice cream top</div></div><div class="menu-price">Rp47.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Milk Shake Strawberry</div><div class="menu-desc">Rasa strawberry manis asam creamy</div></div><div class="menu-price">Rp47.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Milk Shake Vanilla</div><div class="menu-desc">Aroma vanila lembut manis susu klasik</div></div><div class="menu-price">Rp47.000</div></div>
+        </div>
+
+        <div class="menu-group" id="soft-drink">
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Coca-Cola Can</div><div class="menu-desc">Minuman bersoda segar kemasan kaleng</div></div><div class="menu-price">Rp25.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Coca-Cola Pitcher</div><div class="menu-desc">Porsi teko besar pas untuk dinikmati bersama</div></div><div class="menu-price">Rp92.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Fanta Merah Can</div><div class="menu-desc">Soda rasa buah stroberi kemasan kaleng</div></div><div class="menu-price">Rp25.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Fanta Merah Pitcher</div><div class="menu-desc">Fanta porsi pitcher besar sharing</div></div><div class="menu-price">Rp92.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Greensands</div><div class="menu-desc">Minuman soda shandy rasa apel jeruk segar</div></div><div class="menu-price">Rp25.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Pokka Green Tea</div><div class="menu-desc">Teh hijau melati jepang kaleng segar</div></div><div class="menu-price">Rp32.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Soda Gembira</div><div class="menu-desc">Campuran susu kental manis, sirup merah, dan air soda</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Sprite Can</div><div class="menu-desc">Soda jernih rasa lemon kemasan kaleng</div></div><div class="menu-price">Rp25.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Sprite Pitcher</div><div class="menu-desc">Sprite ukuran pitcher teko besar</div></div><div class="menu-price">Rp92.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Fanta Susu</div><div class="menu-desc">Kombinasi fanta merah dicampur susu kental manis</div></div><div class="menu-price">Rp37.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Krating Daeng</div><div class="menu-desc">Minuman energi berstamina botol</div></div><div class="menu-price">Rp32.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Pocari Sweat</div><div class="menu-desc">Minuman isotonik pengganti ion tubuh kaleng</div></div><div class="menu-price">Rp25.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Pulpy Orange</div><div class="menu-desc">Minuman rasa jeruk dengan bulir buah asli</div></div><div class="menu-price">Rp25.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Yakult</div><div class="menu-desc">Minuman susu fermentasi baik untuk usus</div></div><div class="menu-price">Rp10.000</div></div>
+        </div>
+
+        <div class="menu-group" id="drink-coffee">
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Air Mineral</div><div class="menu-desc">Air minum mineral botol dingin / biasa</div></div><div class="menu-price">Rp20.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Milo Hot</div><div class="menu-desc">Minuman cokelat milo seduh hangat padat gizi</div></div><div class="menu-price">Rp37.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Milo Ice</div><div class="menu-desc">Milo kocok dingin es menyegarkan</div></div><div class="menu-price">Rp37.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Es Jeruk</div><div class="menu-desc">Perasan jeruk manis disajikan dingin es</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Es Jeruk Nipis</div><div class="menu-desc">Perasan jeruk nipis asam manis dingin segar</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Teh Hot</div><div class="menu-desc">Seduhan teh hitam wangi hangat murni</div></div><div class="menu-price">Rp23.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Es Teh</div><div class="menu-desc">Es teh manis pelepas dahaga favorit kasual</div></div><div class="menu-price">Rp23.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jeruk Hot</div><div class="menu-desc">Jeruk peras hangat manis alami</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Jeruk Nipis Hot</div><div class="menu-desc">Seduhan jeruk nipis hangat pas di tenggorokan</div></div><div class="menu-price">Rp44.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Lemon Tea Hot</div><div class="menu-desc">Perpaduan teh dan lemon hangat harum</div></div><div class="menu-price">Rp32.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Lemon Tea Ice</div><div class="menu-desc">Teh lemon dingin segar asam manis</div></div><div class="menu-price">Rp32.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Lemon Tea Pitcher</div><div class="menu-desc">Lemon tea porsi teko besar sharing rame-rame</div></div><div class="menu-price">Rp92.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Susu Putih Hot</div><div class="menu-desc">Susu putih murni seduh hangat kenyamanan murni</div></div><div class="menu-price">Rp32.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Susu Putih Ice</div><div class="menu-desc">Es susu putih manis dingin</div></div><div class="menu-price">Rp32.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Susu Coklat Hot</div><div class="menu-desc">Susu cokelat hangat manis lezat manis</div></div><div class="menu-price">Rp32.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Susu Coklat Ice</div><div class="menu-desc">Es susu cokelat segar digemari</div></div><div class="menu-price">Rp32.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Teh Pitcher</div><div class="menu-desc">Satu pitcher teko es teh manis besar</div></div><div class="menu-price">Rp92.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Cappuccino</div><div class="menu-desc">Kopi cappuccino espresso kental foam tebal</div></div><div class="menu-price">Rp35.000</div></div>
+            <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=120" class="menu-thumb"><div class="menu-details"><div class="menu-title">Kopi</div><div class="menu-desc">Kopi hitam mantap seduh tradisional aromatik</div></div><div class="menu-price">Rp30.000</div></div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentCategory = 'all';
+
+        function switchCategory(categoryId, element) {
+            currentCategory = categoryId;
+            const items = document.querySelectorAll('.category-item');
+            items.forEach(item => item.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            }
+
+            // Kosongkan input search saat memilih kategori
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput && searchInput.value.trim() === '') {
+                searchInput.value = '';
+            }
+
+            const groups = document.querySelectorAll('.menu-group');
+            groups.forEach(group => {
+                if (categoryId === 'all') {
+                    group.style.display = 'block';
+                } else {
+                    group.style.display = group.id === categoryId ? 'block' : 'none';
+                }
+                group.querySelectorAll('.menu-card').forEach(card => {
+                    card.style.display = 'flex';
+                });
+            });
+        }
+
+        function searchMenu(value) {
+            const keyword = value.trim().toLowerCase();
+            if (!keyword) {
+                switchCategory(currentCategory, document.querySelector('.category-item.active'));
+                return;
+            }
+
+            document.querySelectorAll('.category-item').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.menu-group').forEach(group => {
+                let groupHasMatch = false;
+                group.querySelectorAll('.menu-card').forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    const match = text.includes(keyword);
+                    card.style.display = match ? 'flex' : 'none';
+                    if (match) {
+                        groupHasMatch = true;
+                    }
+                });
+                group.style.display = groupHasMatch ? 'block' : 'none';
+            });
+        }
+
+        const groupLabels = {
+            'nasi-goreng': 'Nasi Goreng & Nasi Putih',
+            'mie-kwetiaw': 'Mie & Kwetiaw',
+            'hot-snack': 'Hot Snack',
+            'food': 'Food',
+            'salad-dessert': 'Salad & Dessert',
+            'cancimen': 'Cancimen',
+            'jus-milkshake': 'Jus & Milkshake',
+            'soft-drink': 'Soft Drink',
+            'drink-coffee': 'Drink & Coffee'
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.menu-group').forEach(group => {
+                if (!group.querySelector('.menu-group-title')) {
+                    const title = document.createElement('div');
+                    title.className = 'menu-group-title';
+                    title.textContent = groupLabels[group.id] || 'Menu';
+                    group.insertBefore(title, group.firstChild);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
