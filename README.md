@@ -1,44 +1,18 @@
-﻿# Buku Menu Happy Puppy Antasari
+# Buku Menu Happy Puppy Antasari
 
-Halaman ini adalah buku menu statis yang siap diupload ke GitHub. Isi menu dapat dilihat langsung di `index.html`.
+Buku menu digital Happy Puppy Antasari berbasis Vue/Vite, dengan versi statis siap dipakai untuk GitHub Pages.
 
-## Fitur halaman
+## Website
 
-- Tampilan buku menu sederhana dan responsif
-- Pencarian menu cepat di bagian atas
-- Filter kategori menu
-- Daftar makanan dan minuman lengkap
+- Local: `http://192.168.29.6/`
+- GitHub Pages root: `https://wawazrc.github.io/`
 
-## Cara melihat halaman
+## Struktur Penting
 
-1. Buka file `index.html` di browser.
-2. Jika ingin melihat dari server lokal, cukup jalankan server lokal atau gunakan Live Server.
-
-## Upload ke GitHub
-
-1. Buat repository baru di GitHub.
-2. Pastikan Anda berada di folder proyek:
-   ```powershell
-   cd c:\xampp\htdocs\buku-menu
-   ```
-3. Tambahkan file dan commit:
-   ```powershell
-   git add .
-   git commit -m "Tambah buku menu Happy Puppy Antasari"
-   ```
-4. Tambahkan remote GitHub (ganti URL dengan alamat repo Anda):
-   ```powershell
-   git remote add origin https://github.com/USERNAME/NAMA-REPO.git
-   ```
-5. Push ke GitHub:
-   ```powershell
-   git push -u origin main
-   ```
-
-## GitHub Pages
-
-Jika Anda ingin menampilkan laman ini sebagai website publik, aktifkan GitHub Pages di repository Anda dengan sumber `main` dan root folder `/`.
+- `resources/js/components/MenuHappup.vue`: data menu, gambar, harga, dan tampilan utama.
+- `public/images`: asset gambar untuk aplikasi lokal Laravel/Vite.
+- `index.html`, `build/`, `images/`: versi statis untuk GitHub Pages.
 
 ## Catatan
 
-Halaman menu berada di file `index.html`. Jika ingin menambahkan menu baru, tinggal edit bagian `<div class="menu-list-container">` di dalam `index.html`.
+Jangan upload file `.env`, `.env.backup`, `vendor/`, atau `node_modules/` ke GitHub.
