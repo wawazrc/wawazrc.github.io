@@ -1443,11 +1443,13 @@ export default {
 
   .banner-content {
     padding-bottom: 32px;
-    padding-top: 20px;
+    padding-top: 12px;
   }
 
   .banner-logo {
-    display: none;
+    border-radius: 8px;
+    height: 28px;
+    margin-bottom: 6px;
   }
 
   .menu-container {
@@ -1486,11 +1488,14 @@ export default {
 
   .main-title {
     font-size: 28px;
-    margin-bottom: 0;
+    margin-bottom: 6px;
   }
 
   .address {
-    display: none;
+    display: block;
+    font-size: 12px;
+    line-height: 1.25;
+    max-width: 100%;
   }
 }
 
@@ -1500,7 +1505,7 @@ export default {
   }
 
   .address {
-    font-size: 14px;
+    font-size: 11px;
   }
 
   .container {
