@@ -602,7 +602,6 @@ export default {
           <div class="room-picker-copy">
             <span class="room-step">Langkah 1</span>
             <h2 id="room-picker-title">Pilih Room Karaoke</h2>
-            <p>Nomor room wajib dipilih sebelum menambahkan menu ke keranjang.</p>
           </div>
 
           <label class="room-select-group room-select-inline" for="pageRoomNumber">
