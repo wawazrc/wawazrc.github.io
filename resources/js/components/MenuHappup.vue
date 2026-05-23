@@ -12,6 +12,8 @@ const outlet = {
   name: 'Happy Puppy Antasari',
   tagline: 'Happy Puppy Antasari',
   address: 'Jl. P Antasari No.2, Air Putih, Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur 75124',
+  email: 'happup.samarinda.antasari@gmail.com',
+  openingHours: '11.00 AM - 02.00 AM',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Happy%20Puppy%20Antasari%20Samarinda',
   logo: assetUrl('/images/happup-antasari-logo.jpeg'),
   bannerLogo: assetUrl('/images/Logohappup.png'),
@@ -702,29 +704,62 @@ export default {
       </section>
 
       <footer class="footer-note">
-        <img
-          :src="outlet.logo"
-          :alt="outlet.name"
-          class="footer-logo"
-        >
-        <p>
-          &copy; 2026 {{ outlet.name }}. All Rights Reserved.
-          <br>
-          {{ outlet.tagline }}
-        </p>
-        <div class="social-links">
-          <a :href="outlet.whatsappUrl" target="_blank" rel="noreferrer">
-            <img :src="outlet.whatsappIcon" alt="" class="social-icon">
-            WhatsApp
-          </a>
-          <a :href="outlet.instagramUrl" target="_blank" rel="noreferrer">
-            <img :src="outlet.instagramIcon" alt="" class="social-icon">
-            Instagram
-          </a>
-          <a :href="outlet.facebookUrl" target="_blank" rel="noreferrer">
-            <img :src="outlet.facebookIcon" alt="" class="social-icon">
-            Facebook
-          </a>
+        <div class="footer-info-grid">
+          <section class="footer-info-item">
+            <span class="footer-info-icon" aria-hidden="true">⌖</span>
+            <div>
+              <h2>Alamat</h2>
+              <a :href="outlet.mapsUrl" target="_blank" rel="noreferrer">
+                {{ outlet.address }}
+              </a>
+            </div>
+          </section>
+
+          <section class="footer-info-item">
+            <span class="footer-info-icon" aria-hidden="true">☎</span>
+            <div>
+              <h2>Contact</h2>
+              <a :href="`mailto:${outlet.email}`">{{ outlet.email }}</a>
+            </div>
+          </section>
+
+          <section class="footer-info-item">
+            <span class="footer-info-icon" aria-hidden="true">◷</span>
+            <div>
+              <h2>Opening Hours</h2>
+              <p>{{ outlet.openingHours }}</p>
+            </div>
+          </section>
+
+          <section class="footer-info-item footer-follow">
+            <div>
+              <h2>Follow Us</h2>
+              <div class="social-links">
+                <a :href="outlet.whatsappUrl" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+                  <img :src="outlet.whatsappIcon" alt="" class="social-icon">
+                </a>
+                <a :href="outlet.instagramUrl" target="_blank" rel="noreferrer" aria-label="Instagram">
+                  <img :src="outlet.instagramIcon" alt="" class="social-icon">
+                </a>
+                <a :href="outlet.facebookUrl" target="_blank" rel="noreferrer" aria-label="Facebook">
+                  <img :src="outlet.facebookIcon" alt="" class="social-icon">
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="footer-bottom">
+          <img
+            :src="outlet.logo"
+            :alt="outlet.name"
+            class="footer-logo"
+          >
+          <p>
+            &copy; 2026 {{ outlet.name }}. All Rights Reserved.
+            <br>
+            {{ outlet.tagline }}
+          </p>
         </div>
       </footer>
     </section>
@@ -1386,19 +1421,81 @@ export default {
 }
 
 .footer-note {
-  border-top: 1px solid #eee;
-  color: var(--text-muted);
+  background: rgba(18, 18, 18, 0.94);
+  border-top: 4px solid var(--primary-color);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 14px;
   margin-top: 60px;
-  padding-top: 20px;
+  padding: 34px 34px 26px;
+}
+
+.footer-info-grid {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1.4fr 1.2fr 1fr 0.9fr;
+  padding-bottom: 30px;
+}
+
+.footer-info-item {
+  align-items: flex-start;
+  display: flex;
+  gap: 14px;
+  min-width: 0;
+}
+
+.footer-info-icon {
+  color: var(--primary-color);
+  flex: 0 0 auto;
+  font-size: 28px;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.footer-info-item h2 {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+.footer-info-item a,
+.footer-info-item p {
+  color: rgba(255, 255, 255, 0.84);
+  display: block;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.footer-info-item a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-follow {
+  justify-content: flex-start;
+}
+
+.footer-bottom {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 24px;
   text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
 }
 
 .footer-logo {
   border-radius: 10px;
   display: block;
   height: 52px;
-  margin: 0 auto 12px;
   object-fit: contain;
   width: auto;
 }
@@ -1406,21 +1503,23 @@ export default {
 .social-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 16px;
+  gap: 12px;
+  justify-content: flex-start;
+  margin-top: 0;
 }
 
 .social-links a {
   align-items: center;
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
-  color: var(--primary-color);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #fff;
   display: inline-flex;
-  gap: 8px;
-  font-weight: 700;
-  padding: 8px 14px;
+  height: 40px;
+  justify-content: center;
+  padding: 0;
   text-decoration: none;
+  transition: all 0.25s;
+  width: 40px;
 }
 
 .social-icon {
@@ -1431,7 +1530,9 @@ export default {
 
 .social-links a:hover {
   background: var(--primary-color);
+  border-color: var(--primary-color);
   color: #fff;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {
@@ -1496,6 +1597,14 @@ export default {
     line-height: 1.25;
     max-width: 100%;
   }
+
+  .footer-note {
+    padding: 28px 20px 24px;
+  }
+
+  .footer-info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 520px) {
@@ -1536,6 +1645,15 @@ export default {
     bottom: 16px;
     left: 16px;
     right: 16px;
+  }
+
+  .footer-info-grid {
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .footer-info-item {
+    gap: 12px;
   }
 }
 </style>
