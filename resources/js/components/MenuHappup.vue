@@ -1,9 +1,23 @@
 <script>
+const appBase = import.meta.env.BASE_URL || '/';
+const assetUrl = (path) => {
+  if (!path || /^https?:\/\//.test(path)) {
+    return path;
+  }
+
+  const normalizedBase = appBase.endsWith('/') ? appBase : `${appBase}/`;
+  return `${normalizedBase}${path.replace(/^\/+/, '')}`;
+};
 const outlet = {
   name: 'Happy Puppy Antasari',
   tagline: 'Happy Puppy Antasari',
   address: 'Jl. P Antasari No.2, Air Putih, Kec. Samarinda Ulu, Kota Samarinda, Kalimantan Timur 75124',
-  logo: '/images/happup-antasari-logo.jpeg',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Happy%20Puppy%20Antasari%20Samarinda',
+  logo: assetUrl('/images/happup-antasari-logo.jpeg'),
+  bannerLogo: assetUrl('/images/Logohappup.png'),
+  whatsappIcon: assetUrl('/images/whatsapp.svg'),
+  instagramIcon: assetUrl('/images/instagram.svg'),
+  facebookIcon: assetUrl('/images/facebook.svg'),
   whatsappUrl: 'https://wa.me/6282148004822',
   instagramUrl: 'https://www.instagram.com/happup.samarinda.antasari/',
   facebookUrl: 'https://www.facebook.com/happup.samarinda.antasari/',
@@ -223,7 +237,7 @@ const createItem = (name, price, icon, image = null) => ({
   name,
   price,
   icon,
-  image: image || getOnlineMenuImage(name),
+  image: image ? assetUrl(image) : getOnlineMenuImage(name),
   description: getProductKnowledge(name),
 });
 
@@ -557,55 +571,64 @@ export default {
 
 <template>
   <main class="menu-page">
-    <section
-      class="menu-banner"
-      aria-label="Banner menu Happy Puppy Antasari"
-    >
-      <div class="banner-content">
-        <img
-          :src="'/images/Logohappup.png'"
-          alt="Happy Puppy"
-          class="banner-logo"
-        >
-        <p class="subtitle">{{ outlet.tagline }}</p>
-        <h1 class="main-title">
-          Menu <span>Happup Antasari</span>
-        </h1>
-        <p class="address">
-          {{ outlet.address }}
-        </p>
-      </div>
+    <section class="menu-hero">
+      <section
+        class="menu-banner"
+        aria-label="Banner menu Happy Puppy Antasari"
+      >
+        <div class="banner-content">
+          <img
+            :src="outlet.bannerLogo"
+            alt="Happy Puppy"
+            class="banner-logo"
+          >
+          <p class="subtitle">{{ outlet.tagline }}</p>
+          <h1 class="main-title">
+            Menu <span>Happup Antasari</span>
+          </h1>
+          <a
+            :href="outlet.mapsUrl"
+            class="address"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {{ outlet.address }}
+          </a>
+        </div>
+      </section>
+
+      <section class="container hero-container">
+        <section class="room-picker-card" aria-labelledby="room-picker-title">
+          <div class="room-picker-copy">
+            <span class="room-step">Langkah 1</span>
+            <h2 id="room-picker-title">Pilih Room Karaoke</h2>
+            <p>Nomor room wajib dipilih sebelum menambahkan menu ke keranjang.</p>
+          </div>
+
+          <label class="room-select-group room-select-inline" for="pageRoomNumber">
+            <span>Nomor Room</span>
+            <select id="pageRoomNumber" v-model="selectedRoom">
+              <option value="">-- Pilih Nomor Room --</option>
+              <optgroup
+                v-for="group in roomGroups"
+                :key="group.label"
+                :label="group.label"
+              >
+                <option
+                  v-for="room in group.rooms"
+                  :key="room"
+                  :value="room"
+                >
+                  {{ room }}
+                </option>
+              </optgroup>
+            </select>
+          </label>
+        </section>
+      </section>
     </section>
 
     <section class="container">
-      <section class="room-picker-card" aria-labelledby="room-picker-title">
-        <div class="room-picker-copy">
-          <span class="room-step">Langkah 1</span>
-          <h2 id="room-picker-title">Pilih Room Karaoke</h2>
-          <p>Nomor room wajib dipilih sebelum menambahkan menu ke keranjang.</p>
-        </div>
-
-        <label class="room-select-group room-select-inline" for="pageRoomNumber">
-          <span>Nomor Room</span>
-          <select id="pageRoomNumber" v-model="selectedRoom">
-            <option value="">-- Pilih Nomor Room --</option>
-            <optgroup
-              v-for="group in roomGroups"
-              :key="group.label"
-              :label="group.label"
-            >
-              <option
-                v-for="room in group.rooms"
-                :key="room"
-                :value="room"
-              >
-                {{ room }}
-              </option>
-            </optgroup>
-          </select>
-        </label>
-      </section>
-
       <div class="menu-tabs-shell">
         <button
           type="button"
@@ -692,15 +715,15 @@ export default {
         </p>
         <div class="social-links">
           <a :href="outlet.whatsappUrl" target="_blank" rel="noreferrer">
-            <img :src="'/images/whatsapp.svg'" alt="" class="social-icon">
+            <img :src="outlet.whatsappIcon" alt="" class="social-icon">
             WhatsApp
           </a>
           <a :href="outlet.instagramUrl" target="_blank" rel="noreferrer">
-            <img :src="'/images/instagram.svg'" alt="" class="social-icon">
+            <img :src="outlet.instagramIcon" alt="" class="social-icon">
             Instagram
           </a>
           <a :href="outlet.facebookUrl" target="_blank" rel="noreferrer">
-            <img :src="'/images/facebook.svg'" alt="" class="social-icon">
+            <img :src="outlet.facebookIcon" alt="" class="social-icon">
             Facebook
           </a>
         </div>
@@ -804,6 +827,42 @@ export default {
   width: 100%;
 }
 
+.menu-hero {
+  background-image: url("/images/Bgweb.jpeg");
+  background-position: center 70%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 24px 60px rgba(20, 42, 28, 0.2);
+  overflow: hidden;
+  padding-bottom: 34px;
+  position: relative;
+}
+
+.menu-hero::before {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.42) 44%, rgba(0, 0, 0, 0.08) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.24) 58%, rgba(0, 0, 0, 0.46) 100%);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.menu-hero::after {
+  background:
+    linear-gradient(180deg, rgba(247, 242, 234, 0) 0%, rgba(247, 242, 234, 0.55) 58%, rgba(247, 242, 234, 0.96) 100%);
+  content: "";
+  inset: 46% 0 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
 .subtitle {
   color: rgba(255, 255, 255, 0.88);
   font-size: 12px;
@@ -830,23 +889,25 @@ export default {
 
 .address {
   color: rgba(255, 255, 255, 0.9);
+  display: block;
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(13px, 1.3vw, 16px);
   font-style: italic;
   margin: 0;
   max-width: 680px;
+  text-decoration: none;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.address:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 .menu-banner {
   align-items: center;
   aspect-ratio: 16 / 2;
-  background-image: url("/images/Bgweb.jpeg");
-  background-position: center 70%;
-  background-repeat: no-repeat;
-  background-size: cover;
   border-radius: 0;
-  box-shadow: 0 24px 60px rgba(20, 42, 28, 0.2);
   display: flex;
   height: auto;
   justify-content: flex-start;
@@ -857,24 +918,11 @@ export default {
 }
 
 .menu-banner::before {
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.42) 44%, rgba(0, 0, 0, 0.08) 100%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.28) 68%, rgba(0, 0, 0, 0.48) 100%);
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
+  display: none;
 }
 
 .menu-banner::after {
-  background: linear-gradient(180deg, rgba(247, 242, 234, 0) 0%, rgba(247, 242, 234, 0.86) 100%);
-  bottom: 0;
-  content: "";
-  height: 88px;
-  left: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
+  display: none;
 }
 
 .banner-content {
@@ -952,14 +1000,14 @@ export default {
 
 .room-picker-card {
   align-items: center;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(23, 138, 75, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 8px;
-  box-shadow: 0 10px 28px rgba(20, 42, 28, 0.08);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
   display: flex;
   gap: 18px;
   justify-content: space-between;
-  margin-top: 28px;
+  margin-top: 0;
   padding: 16px 20px;
 }
 
@@ -1388,8 +1436,9 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .menu-banner {
+  .menu-hero {
     background-position: center 42%;
+    padding-bottom: 24px;
   }
 
   .banner-content {
@@ -1422,7 +1471,7 @@ export default {
   .menu-tabs-shell {
     gap: 8px;
     margin-bottom: 32px;
-    margin-top: 28px;
+    margin-top: 0;
   }
 
   .tab-btn {
