@@ -1000,7 +1000,7 @@ export default {
 
 .room-picker-card {
   align-items: center;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 8px;
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
