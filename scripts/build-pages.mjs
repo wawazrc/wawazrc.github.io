@@ -20,6 +20,7 @@ rmSync(distDir, { force: true, recursive: true });
 mkdirSync(distDir, { recursive: true });
 
 cpSync(publicBuildDir, join(distDir, 'build'), { recursive: true });
+cpSync(join(publicBuildDir, 'assets'), join(distDir, 'assets'), { recursive: true });
 cpSync(publicImagesDir, join(distDir, 'images'), { recursive: true });
 
 for (const file of ['favicon.ico', 'robots.txt']) {
