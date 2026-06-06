@@ -1,10 +1,6 @@
 {
-  "images/Bgweb.jpeg": {
-    "file": "assets/Bgweb-KoC1Q_8w.jpeg",
-    "src": "images/Bgweb.jpeg"
-  },
   "resources/css/app.css": {
-    "file": "assets/app-DetmjZlQ.css",
+    "file": "assets/app-Bw8ffdIK.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -13,16 +9,13 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-DLzqdArW.js",
+    "file": "assets/app-CTPOWXYg.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-D2PVPDLj.css",
-      "assets/app-DetmjZlQ.css"
-    ],
-    "assets": [
-      "assets/Bgweb-KoC1Q_8w.jpeg"
+      "assets/app-C9cF8C60.css",
+      "assets/app-Bw8ffdIK.css"
     ]
   }
 }

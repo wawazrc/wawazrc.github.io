@@ -5,7 +5,7 @@ Buku menu digital Happy Puppy Antasari berbasis Vue/Vite. Repository ini disiapk
 ## Website
 
 - Local: `http://192.168.29.6/`
-- GitHub Pages: `https://happup-antasari.github.io/menu/`
+- GitHub Pages: `https://wawazrc.github.io/`
 
 ## Struktur Penting
 

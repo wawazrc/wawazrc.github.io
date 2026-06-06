@@ -1,5 +1,23 @@
 <script>
-const appBase = import.meta.env.BASE_URL || '/';
+const getAppBase = () => {
+  if (typeof window === 'undefined') {
+    return import.meta.env.BASE_URL || '/';
+  }
+
+  if (window.location.protocol === 'file:') {
+    return './';
+  }
+
+  const publicPathIndex = window.location.pathname.indexOf('/public/');
+  if (publicPathIndex !== -1) {
+    return `${window.location.pathname.slice(0, publicPathIndex)}/public/`;
+  }
+
+  const viteBase = import.meta.env.BASE_URL || '/';
+  return viteBase === './' ? '/' : viteBase;
+};
+
+const appBase = getAppBase();
 const assetUrl = (path) => {
   if (!path || /^https?:\/\//.test(path)) {
     return path;
@@ -15,7 +33,7 @@ const outlet = {
   email: 'happup.samarinda.antasari@gmail.com',
   openingHours: '11.00 AM - 02.00 AM',
   mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Happy%20Puppy%20Antasari%20Samarinda',
-  logo: assetUrl('/images/happup-antasari-logo.jpeg'),
+  logo: assetUrl('/images/Logohappup.png'),
   bannerLogo: assetUrl('/images/Logohappup.png'),
   whatsappIcon: assetUrl('/images/whatsapp.svg'),
   instagramIcon: assetUrl('/images/instagram.svg'),
@@ -23,79 +41,77 @@ const outlet = {
   whatsappUrl: 'https://wa.me/6282148004822',
   instagramUrl: 'https://www.instagram.com/happup.samarinda.antasari/',
   facebookUrl: 'https://www.facebook.com/happup.samarinda.antasari/',
+  supportUrl: 'https://s.shopee.co.id/7pqf81PiJq',
 };
 
-const getOnlineMenuImage = (name) => {
+const heroImageUrl = assetUrl('/images/Bgweb.jpeg');
+
+const getFallbackMenuImage = (name) => {
   const lowerName = name.toLowerCase();
-  const seed = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   const keywordRules = [
-    ['mie', 'fried noodles'],
-    ['kwetiaw', 'fried noodles'],
-    ['bihun', 'fried noodles'],
-    ['indomie', 'instant noodles'],
-    ['chicken wings', 'chicken wings'],
-    ['chicken nugget', 'chicken nuggets'],
-    ['kentang', 'french fries'],
-    ['sosis', 'fried sausage'],
-    ['onion ring', 'onion rings'],
-    ['pisang', 'banana dessert'],
-    ['nachos', 'nachos'],
-    ['cireng', 'fried snack'],
-    ['tempe', 'fried tempeh'],
-    ['tahu', 'fried tofu'],
-    ['telur', 'omelette'],
-    ['paru', 'fried beef'],
-    ['pempek', 'fish cake'],
-    ['sop iga', 'beef rib soup'],
-    ['ayam', 'fried chicken'],
-    ['sapi', 'beef dish'],
-    ['udang', 'shrimp dish'],
-    ['cumi', 'squid dish'],
-    ['fu yung hai', 'omelette'],
-    ['cap cay', 'stir fry vegetables'],
-    ['salad', 'fruit salad'],
-    ['buah', 'fresh fruit'],
-    ['ice cream', 'ice cream'],
-    ['frozz', 'candy'],
-    ['hexos', 'mint candy'],
-    ['chunky', 'chocolate bar'],
-    ['cadbury', 'chocolate bar'],
-    ['silverqueen', 'chocolate bar'],
-    ['delfi', 'chocolate bar'],
-    ['kacang', 'peanuts'],
-    ['pringles', 'potato chips'],
-    ['chitato', 'potato chips'],
-    ['qtela', 'cassava chips'],
-    ['milk shake', 'milkshake'],
-    ['coca-cola', 'soft drink'],
-    ['fanta', 'soft drink'],
-    ['sprite', 'soft drink'],
-    ['greensands', 'soft drink'],
-    ['pokka', 'green tea drink'],
-    ['soda', 'soft drink'],
-    ['krating', 'energy drink'],
-    ['pulpy', 'orange juice'],
-    ['yakult', 'yogurt drink'],
-    ['air mineral', 'mineral water'],
-    ['milo', 'chocolate milk'],
-    ['teh', 'iced tea'],
-    ['jeruk', 'orange juice'],
-    ['susu', 'milk'],
-    ['cappuccino', 'cappuccino'],
-    ['kopi', 'coffee'],
-    ['rokok', 'cigarette pack'],
-    ['marlboro', 'cigarette pack'],
-    ['marboro', 'cigarette pack'],
-    ['sampoerna', 'cigarette pack'],
-    ['la ', 'cigarette pack'],
-    ['esse', 'cigarette pack'],
-    ['korek', 'lighter'],
+    ['mie', '/images/Mie Goreng.png'],
+    ['kwetiaw', '/images/Kwetiaw Goreng.png'],
+    ['bihun', '/images/Bihun Goreng.png'],
+    ['indomie', '/images/INTERNET (2).png'],
+    ['chicken wings', '/images/CHIKENWING.png'],
+    ['chicken nugget', '/images/CHIKENNUGGET.png'],
+    ['kentang', '/images/KENTANGGORENG.png'],
+    ['sosis', '/images/SOSISGORENG.png'],
+    ['onion ring', '/images/onion-ring.jpg'],
+    ['pisang', '/images/PISANGKEJUCOKLAT.png'],
+    ['cireng', '/images/Cireng.jpg'],
+    ['tempe', '/images/Tempe-Mendoan.jpg'],
+    ['tahu', '/images/TAHU-BAKSO.jpeg'],
+    ['telur', '/images/TELUR-DADAR.jpg'],
+    ['paru', '/images/PARU.jpg'],
+    ['pempek', '/images/OTE-OTE.jpg'],
+    ['sop iga', '/images/SOP-IGA-SAPI.png'],
+    ['ayam lada hitam', '/images/ayam-lada-hitam.png'],
+    ['ayam', '/images/resep-ayam-goreng-krispi-korea_43.jpeg'],
+    ['sapi', '/images/SAPI-LADA-HITAM.png'],
+    ['udang', '/images/UDANGGORENGTEPUNG.png'],
+    ['cumi', '/images/cumi-treyaki.png'],
+    ['fu yung hai', '/images/fu-yung-hay.jpg'],
+    ['cap cay', '/images/CAPCAY.png'],
+    ['salad', '/images/salad-buah.png'],
+    ['buah', '/images/buah-segar (1).png'],
+    ['ice cream', '/images/escream-buah.png'],
+    ['frozz', '/images/frozz.webp'],
+    ['hexos', '/images/hexos.png'],
+    ['chunky', '/images/cb.jpg'],
+    ['cadbury', '/images/cadburry.jpg'],
+    ['silverqueen', '/images/sq.jpeg'],
+    ['delfi', '/images/delfy.webp'],
+    ['kacang', '/images/KACANGBAWANG.png'],
+    ['pringles', '/images/pringles.jpg'],
+    ['chitato', '/images/Chitato.jpg'],
+    ['qtela', '/images/qtela.jpg'],
+    ['milk shake', '/images/milkshake.png'],
+    ['coca-cola', '/images/coca-cola.png'],
+    ['fanta', '/images/fanta.jpg'],
+    ['sprite', '/images/sprite.jpg'],
+    ['pokka', '/images/pokka-greetea.jpeg'],
+    ['soda', '/images/soda-gembira.jpg'],
+    ['krating', '/images/krating-deng.jpg'],
+    ['yakult', '/images/Yakult.jpg'],
+    ['air mineral', '/images/cleo.png'],
+    ['milo', '/images/dingin.png'],
+    ['teh', '/images/dingin.png'],
+    ['jeruk', '/images/Jus Jeruk.png'],
+    ['susu', '/images/milkshake.png'],
+    ['cappuccino', '/images/hot.png'],
+    ['kopi', '/images/hot.png'],
+    ['rokok', '/images/rokok/sampoerna-mild.jpg'],
+    ['marlboro', '/images/rokok/malboro-merah.png'],
+    ['marboro', '/images/rokok/malboro-merah.png'],
+    ['sampoerna', '/images/rokok/sampoerna-mild.jpg'],
+    ['la ', '/images/rokok/la-light.jpg'],
+    ['esse', '/images/rokok/esse-change.png'],
+    ['korek', '/images/rokok/korek.jpeg'],
   ];
 
   const matchedRule = keywordRules.find(([keyword]) => lowerName.includes(keyword));
-  const query = (matchedRule ? matchedRule[1] : 'restaurant food').replace(/\s+/g, ',');
-
-  return `https://loremflickr.com/160/160/${encodeURIComponent(query)}?lock=${encodeURIComponent(seed)}`;
+  return assetUrl(matchedRule ? matchedRule[1] : '/images/Logohappup.png');
 };
 
 const getProductKnowledge = (name) => {
@@ -239,7 +255,7 @@ const createItem = (name, price, icon, image = null) => ({
   name,
   price,
   icon,
-  image: image ? assetUrl(image) : getOnlineMenuImage(name),
+  image: image ? assetUrl(image) : getFallbackMenuImage(name),
   description: getProductKnowledge(name),
 });
 
@@ -312,7 +328,7 @@ const menuCategories = [
       createItem('Ayam Goreng Mentega', 58000, 'AG', '/images/ayam-saus-mentega.jpg'),
       createItem('Ayam Asam Manis', 58000, 'AA', '/images/ayam-asam-manis.jpeg'),
       createItem('Ayam Saos Teriyaki', 58000, 'AT', '/images/ayam-saus-mentega.jpg'),
-      createItem('Ayam Lada Hitam', 58000, 'AL', '/images/ayam-goreng-keRING.jpeg'),
+      createItem('Ayam Lada Hitam', 58000, 'AL', '/images/ayam-lada-hitam.png'),
       createItem('Sapi Lada Hitam', 87000, 'SL', '/images/SAPI-LADA-HITAM.png'),
       createItem('Udang Goreng Tepung', 75000, 'UG', '/images/UDANGGORENGTEPUNG.png'),
       createItem('Udang Mayonaise', 75000, 'UM', '/images/UDANGGORENGTEPUNG.png'),
@@ -322,10 +338,10 @@ const menuCategories = [
       createItem('Udang Saos Teriyaki', 75000, 'UT', '/images/UDANG-SAOS-TREYAKI.png'),
       createItem('Cumi Asam Manis', 68000, 'CA', '/images/CUMI-SAOS-TIRAM.png'),
       createItem('Cumi Saos Tiram', 68000, 'CT', '/images/cumi-treyaki.png'),
-      createItem('Cumi Goreng Kering', 68000, 'CG'),
+      createItem('Cumi Goreng Kering', 68000, 'CG', '/images/cumi-treyaki.png'),
       createItem('Cumi Saos Teriyaki', 68000, 'CT', '/images/cumi-treyaki.png'),
       createItem('Cumi Saos Mentega', 68000, 'CM', '/images/CUMI-SAOS-TIRAM.png'),
-      createItem('Fu Yung Hai', 56000, 'FY'),
+      createItem('Fu Yung Hai', 56000, 'FY', '/images/fu-yung-hay.jpg'),
       createItem('Cap Cay Goreng', 56000, 'CC', '/images/CAPCAY.png'),
       createItem('Cap Cay Kuah', 56000, 'CC', '/images/CAPCAY.png'),
     ],
@@ -408,8 +424,8 @@ const menuCategories = [
       createItem('Susu Coklat Hot', 32000, 'CH', '/images/hot.png'),
       createItem('Susu Coklat Ice', 32000, 'CI', '/images/dingin.png'),
       createItem('Teh Pitcher', 92000, 'TP', '/images/pitcher.png'),
-      createItem('Cappuccino', 35000, 'CP'),
-      createItem('Kopi', 30000, 'KP'),
+      createItem('Cappuccino', 35000, 'CP', '/images/hot.png'),
+      createItem('Kopi', 30000, 'KP', '/images/hot.png'),
     ],
   },
   {
@@ -459,6 +475,7 @@ export default {
       isCartOpen: false,
       selectedRoom: '',
       outlet,
+      heroImageUrl,
       menuCategories,
       roomGroups,
     };
@@ -573,7 +590,7 @@ export default {
 
 <template>
   <main class="menu-page">
-    <section class="menu-hero">
+    <section class="menu-hero" :style="{ '--hero-image': `url('${heroImageUrl}')` }">
       <section
         class="menu-banner"
         aria-label="Banner menu Happy Puppy Antasari"
@@ -704,57 +721,85 @@ export default {
       </section>
 
       <footer class="footer-note">
-        <div class="footer-info-grid">
-          <section class="footer-info-item">
-            <span class="footer-info-icon" aria-hidden="true">⌖</span>
-            <div>
-              <h2>Alamat</h2>
-              <a :href="outlet.mapsUrl" target="_blank" rel="noreferrer">
-                {{ outlet.address }}
+        <div class="footer-grid">
+          <a
+            :href="outlet.mapsUrl"
+            class="footer-info"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="footer-icon" aria-hidden="true">+</span>
+            <span>
+              <strong>Alamat</strong>
+              {{ outlet.address }}
+            </span>
+          </a>
+
+          <a
+            :href="`mailto:${outlet.email}`"
+            class="footer-info"
+          >
+            <span class="footer-icon" aria-hidden="true">&#9742;</span>
+            <span>
+              <strong>Contact</strong>
+              {{ outlet.email }}
+            </span>
+          </a>
+
+          <div class="footer-info">
+            <span class="footer-icon" aria-hidden="true">&#9716;</span>
+            <span>
+              <strong>Opening Hours</strong>
+              {{ outlet.openingHours }}
+            </span>
+          </div>
+
+          <div class="footer-social">
+            <strong>Follow Us</strong>
+            <div class="social-links">
+              <a
+                :href="outlet.whatsappUrl"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="WhatsApp"
+              >
+                <img :src="outlet.whatsappIcon" alt="" class="social-icon">
+              </a>
+              <a
+                :href="outlet.instagramUrl"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+              >
+                <img :src="outlet.instagramIcon" alt="" class="social-icon">
+              </a>
+              <a
+                :href="outlet.facebookUrl"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+              >
+                <img :src="outlet.facebookIcon" alt="" class="social-icon">
               </a>
             </div>
-          </section>
+          </div>
 
-          <section class="footer-info-item">
-            <span class="footer-info-icon" aria-hidden="true">☎</span>
-            <div>
-              <h2>Contact</h2>
-              <a :href="`mailto:${outlet.email}`">{{ outlet.email }}</a>
-            </div>
-          </section>
-
-          <section class="footer-info-item">
-            <span class="footer-info-icon" aria-hidden="true">◷</span>
-            <div>
-              <h2>Opening Hours</h2>
-              <p>{{ outlet.openingHours }}</p>
-            </div>
-          </section>
-
-          <section class="footer-info-item footer-follow">
-            <div>
-              <h2>Follow Us</h2>
-              <div class="social-links">
-                <a :href="outlet.whatsappUrl" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-                  <img :src="outlet.whatsappIcon" alt="" class="social-icon">
-                </a>
-                <a :href="outlet.instagramUrl" target="_blank" rel="noreferrer" aria-label="Instagram">
-                  <img :src="outlet.instagramIcon" alt="" class="social-icon">
-                </a>
-                <a :href="outlet.facebookUrl" target="_blank" rel="noreferrer" aria-label="Facebook">
-                  <img :src="outlet.facebookIcon" alt="" class="social-icon">
-                </a>
-              </div>
-            </div>
-          </section>
         </div>
 
-        <div class="footer-bottom">
-          <img
-            :src="outlet.logo"
-            :alt="outlet.name"
-            class="footer-logo"
-          >
+        <div class="footer-brand">
+          <a
+            :href="outlet.supportUrl"
+            class="footer-logo-button"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Support Happy Puppy Antasari"
+            >
+              <img
+                :src="outlet.logo"
+                :alt="outlet.name"
+                class="footer-logo"
+              >
+            </a>
           <p>
             &copy; 2026 {{ outlet.name }}. All Rights Reserved.
             <br>
@@ -862,7 +907,7 @@ export default {
 }
 
 .menu-hero {
-  background-image: url("/images/Bgweb.jpeg");
+  background-image: var(--hero-image);
   background-position: center 70%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1421,118 +1466,139 @@ export default {
 }
 
 .footer-note {
-  background: rgba(18, 18, 18, 0.94);
+  background: #1b1b1a;
   border-top: 4px solid var(--primary-color);
-  color: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 44px rgba(20, 42, 28, 0.16);
+  color: #fff;
   font-size: 14px;
   margin-top: 60px;
-  padding: 34px 34px 26px;
-}
-
-.footer-info-grid {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  display: grid;
-  gap: 28px;
-  grid-template-columns: 1.4fr 1.2fr 1fr 0.9fr;
-  padding-bottom: 30px;
-}
-
-.footer-info-item {
-  align-items: flex-start;
-  display: flex;
-  gap: 14px;
-  min-width: 0;
-}
-
-.footer-info-icon {
-  color: var(--primary-color);
-  flex: 0 0 auto;
-  font-size: 28px;
-  line-height: 1;
-  margin-top: 1px;
-}
-
-.footer-info-item h2 {
-  color: #fff;
-  font-size: 16px;
-  line-height: 1.2;
-  margin: 0 0 12px;
-}
-
-.footer-info-item a,
-.footer-info-item p {
-  color: rgba(255, 255, 255, 0.84);
-  display: block;
-  font-size: 14px;
-  line-height: 1.55;
-  margin: 0;
-  overflow-wrap: anywhere;
-  text-decoration: none;
-}
-
-.footer-info-item a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.footer-follow {
-  justify-content: flex-start;
-}
-
-.footer-bottom {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-top: 24px;
+  padding: 34px;
   text-align: center;
 }
 
-.footer-bottom p {
-  margin: 0;
+.footer-grid {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1.45fr 1.2fr 1fr 0.8fr;
+  padding-bottom: 30px;
+  text-align: left;
 }
 
-.footer-logo {
-  border-radius: 10px;
+.footer-info {
+  align-items: flex-start;
+  color: #fff;
+  display: flex;
+  gap: 14px;
+  line-height: 1.65;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.footer-info strong,
+.footer-social strong {
+  color: #fff;
   display: block;
-  height: 52px;
-  object-fit: contain;
-  width: auto;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.footer-info span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.footer-icon {
+  align-items: center;
+  color: var(--primary-color);
+  display: inline-flex;
+  flex: 0 0 28px;
+  font-size: 28px;
+  font-weight: 800;
+  height: 28px;
+  justify-content: center;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.footer-info:hover strong,
+.footer-info:hover {
+  color: #8ff0b1;
 }
 
 .social-links {
   display: flex;
-  flex-wrap: wrap;
   gap: 12px;
   justify-content: flex-start;
-  margin-top: 0;
+  margin-top: 10px;
 }
 
 .social-links a {
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 50%;
   color: #fff;
   display: inline-flex;
   height: 40px;
   justify-content: center;
-  padding: 0;
   text-decoration: none;
-  transition: all 0.25s;
+  transition: all 0.25s ease;
   width: 40px;
 }
 
 .social-icon {
   display: block;
-  height: 18px;
-  width: 18px;
+  filter: brightness(0) invert(1);
+  height: 17px;
+  opacity: 0.86;
+  width: 17px;
 }
 
 .social-links a:hover {
   background: var(--primary-color);
   border-color: var(--primary-color);
   color: #fff;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.footer-brand {
+  color: rgba(255, 255, 255, 0.9);
+  padding-top: 24px;
+}
+
+.footer-brand p {
+  margin: 0;
+}
+
+.footer-logo-button {
+  align-items: center;
+  background: rgba(238, 77, 45, 0.12);
+  border: 1px solid rgba(238, 77, 45, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(238, 77, 45, 0.16);
+  color: #fff;
+  display: inline-flex;
+  margin: 0 auto 12px;
+  padding: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.footer-logo-button:hover {
+  background: rgba(238, 77, 45, 0.2);
+  border-color: #ee4d2d;
+  box-shadow: 0 16px 32px rgba(238, 77, 45, 0.26);
+  transform: translateY(-2px);
+}
+
+.footer-logo {
+  border-radius: 10px;
+  display: block;
+  height: 58px;
+  object-fit: contain;
+  width: auto;
 }
 
 @media (max-width: 768px) {
@@ -1576,6 +1642,21 @@ export default {
     margin-top: 0;
   }
 
+  .footer-note {
+    padding: 28px 20px;
+  }
+
+  .footer-grid {
+    gap: 22px;
+    grid-template-columns: 1fr;
+    padding-bottom: 24px;
+  }
+
+  .footer-info,
+  .footer-social {
+    text-align: left;
+  }
+
   .tab-btn {
     font-size: 14px;
     padding: 10px 16px;
@@ -1596,14 +1677,6 @@ export default {
     font-size: 12px;
     line-height: 1.25;
     max-width: 100%;
-  }
-
-  .footer-note {
-    padding: 28px 20px 24px;
-  }
-
-  .footer-info-grid {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -1645,15 +1718,6 @@ export default {
     bottom: 16px;
     left: 16px;
     right: 16px;
-  }
-
-  .footer-info-grid {
-    gap: 24px;
-    grid-template-columns: 1fr;
-  }
-
-  .footer-info-item {
-    gap: 12px;
   }
 }
 </style>

@@ -42,7 +42,7 @@ const html = `<!DOCTYPE html>
     <title>HAPPUP Antasari | Buku Menu</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=poppins:400,500,600,700|playfair-display:600,700,800|cinzel:600,700|jetbrains-mono:400,500" rel="stylesheet">
-    <script type="module" crossorigin src="${normalizedBase}build/${appEntry.file}"></script>
+    <script defer src="${normalizedBase}build/${appEntry.file}"></script>
 ${cssLinks}
   </head>
   <body>

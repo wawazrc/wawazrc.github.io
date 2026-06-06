@@ -2,14 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+$showMenu = function () {
     return view('welcome');
-});
+};
 
-Route::get('/menu-happup', function () {
-    return view('welcome');
-});
+Route::get('/', $showMenu);
+Route::get('/menu-happup', $showMenu);
+Route::get('/menu-alkohol', $showMenu);
 
-Route::get('/menu-alkohol', function () {
-    return view('welcome');
-});
+Route::fallback($showMenu);
