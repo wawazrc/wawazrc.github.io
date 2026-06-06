@@ -561,6 +561,12 @@ export default {
     closeCartModal() {
       this.isCartOpen = false;
     },
+    openRandomRoomSupportLink() {
+      const links = this.outlet.roomSupportLinks;
+      const randomLink = links[Math.floor(Math.random() * links.length)];
+
+      window.open(randomLink, '_blank', 'noopener,noreferrer');
+    },
     submitOrderViaWhatsApp() {
       if (!this.selectedRoom) {
         window.alert('Mohon pilih nomor Room Karaoke Anda terlebih dahulu!');
@@ -634,6 +640,7 @@ export default {
               target="_blank"
               rel="noreferrer"
               :aria-label="`Support Happy Puppy ${index + 1}`"
+              @click.prevent="openRandomRoomSupportLink"
             />
           </div>
 
