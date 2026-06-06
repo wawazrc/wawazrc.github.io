@@ -42,6 +42,13 @@ const outlet = {
   instagramUrl: 'https://www.instagram.com/happup.samarinda.antasari/',
   facebookUrl: 'https://www.facebook.com/happup.samarinda.antasari/',
   supportUrl: 'https://s.shopee.co.id/7pqf81PiJq',
+  roomSupportLinks: [
+    'https://s.shopee.co.id/70HY8USt0d',
+    'https://s.shopee.co.id/7VDojPQyzk',
+    'https://s.shopee.co.id/7KuOX6RcKj',
+    'https://s.shopee.co.id/7pqf81PiJq',
+    'https://s.shopee.co.id/7fXEviQLep',
+  ],
 };
 
 const heroImageUrl = assetUrl('/images/Bgweb.jpeg');
@@ -618,6 +625,18 @@ export default {
 
       <section class="container hero-container">
         <section class="room-picker-card" aria-labelledby="room-picker-title">
+          <div class="room-support-hotspots" aria-label="Link support Happy Puppy">
+            <a
+              v-for="(link, index) in outlet.roomSupportLinks"
+              :key="link"
+              :href="link"
+              class="room-support-hotspot"
+              target="_blank"
+              rel="noreferrer"
+              :aria-label="`Support Happy Puppy ${index + 1}`"
+            />
+          </div>
+
           <div class="room-picker-copy">
             <span class="room-step">Langkah 1</span>
             <h2 id="room-picker-title">Pilih Room Karaoke</h2>
@@ -1088,9 +1107,27 @@ export default {
   justify-content: space-between;
   margin-top: 0;
   padding: 16px 20px;
+  position: relative;
 }
 
 .room-picker-copy {
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.room-support-hotspots {
+  border-radius: inherit;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+.room-support-hotspot {
+  display: block;
   min-width: 0;
 }
 
@@ -1120,6 +1157,8 @@ export default {
 .room-select-inline {
   flex: 0 0 min(360px, 46%);
   margin-bottom: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .menu-tabs-shell {
