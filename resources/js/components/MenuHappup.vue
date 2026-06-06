@@ -819,6 +819,7 @@ export default {
             target="_blank"
             rel="noreferrer"
             aria-label="Support Happy Puppy Antasari"
+            @click.prevent="openRandomRoomSupportLink"
             >
               <img
                 :src="outlet.logo"
