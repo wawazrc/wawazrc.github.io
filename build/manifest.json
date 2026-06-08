@@ -9,12 +9,12 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-DXFxJjKc.js",
+    "file": "assets/app-CcfLJ_V7.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-vLQmc3iN.css",
+      "assets/app-yk9DaDrj.css",
       "assets/app-B9RI-laQ.css"
     ]
   }

@@ -566,7 +566,17 @@ export default {
       });
     },
     removeCartItem(itemName) {
-      this.cart = this.cart.filter((item) => item.name !== itemName);
+      const existingItem = this.cart.find((item) => item.name === itemName);
+
+      if (!existingItem) {
+        return;
+      }
+
+      if (existingItem.quantity > 1) {
+        existingItem.quantity -= 1;
+      } else {
+        this.cart = this.cart.filter((item) => item.name !== itemName);
+      }
 
       if (!this.cart.length) {
         this.closeCartModal();
