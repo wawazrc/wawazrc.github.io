@@ -8,9 +8,15 @@ const getAppBase = () => {
     return './';
   }
 
+  const currentPath = window.location.pathname;
   const publicPathIndex = window.location.pathname.indexOf('/public/');
   if (publicPathIndex !== -1) {
     return `${window.location.pathname.slice(0, publicPathIndex)}/public/`;
+  }
+
+  const projectPathMatch = currentPath.match(/^(.*\/buku-menu)(?:\/|$)/);
+  if (projectPathMatch) {
+    return `${projectPathMatch[1]}/public/`;
   }
 
   const viteBase = import.meta.env.BASE_URL || '/';
@@ -21,6 +27,10 @@ const appBase = getAppBase();
 const assetUrl = (path) => {
   if (!path || /^https?:\/\//.test(path)) {
     return path;
+  }
+
+  if (typeof window !== 'undefined' && window.location.pathname === '/') {
+    return `${window.location.origin}/${path.replace(/^\/+/, '')}`;
   }
 
   const normalizedBase = appBase.endsWith('/') ? appBase : `${appBase}/`;
@@ -555,6 +565,13 @@ export default {
         quantity: 1,
       });
     },
+    removeCartItem(itemName) {
+      this.cart = this.cart.filter((item) => item.name !== itemName);
+
+      if (!this.cart.length) {
+        this.closeCartModal();
+      }
+    },
     openCartModal() {
       this.isCartOpen = true;
     },
@@ -866,8 +883,18 @@ export default {
             :key="item.name"
             class="cart-item-row"
           >
-            <span>{{ item.name }} x{{ item.quantity }}</span>
-            <span>{{ formatRupiah(item.price * item.quantity) }}</span>
+            <div class="cart-item-main">
+              <span class="cart-item-name">{{ item.name }} x{{ item.quantity }}</span>
+              <span class="cart-item-price">{{ formatRupiah(item.price * item.quantity) }}</span>
+            </div>
+            <button
+              type="button"
+              class="btn-remove-cart"
+              :aria-label="`Hapus ${item.name} dari keranjang`"
+              @click="removeCartItem(item.name)"
+            >
+              Hapus
+            </button>
           </div>
         </div>
 
@@ -1467,9 +1494,48 @@ export default {
 }
 
 .cart-item-row {
+  align-items: center;
   font-size: 15px;
   gap: 16px;
   margin-bottom: 12px;
+}
+
+.cart-item-main {
+  align-items: baseline;
+  display: flex;
+  flex: 1;
+  gap: 16px;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.cart-item-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.cart-item-price {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.btn-remove-cart {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  border-radius: 999px;
+  color: #be123c;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-remove-cart:hover {
+  background: #be123c;
+  border-color: #be123c;
+  color: #fff;
 }
 
 .total-price-box {
@@ -1765,6 +1831,21 @@ export default {
     bottom: 16px;
     left: 16px;
     right: 16px;
+  }
+
+  .cart-item-row {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cart-item-main {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .btn-remove-cart {
+    align-self: flex-start;
   }
 }
 </style>
